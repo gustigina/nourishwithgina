@@ -203,8 +203,7 @@
           <li>2–3 thin lemon slices + juice of ½ lemon</li>
           <li>3–4 thin ginger slices</li>
         </ul>
-
-        
+        </div>
       </section>
 
       <div class="recipe-divider"></div>
@@ -213,7 +212,6 @@
       <section class="fade-in" style="transition-delay: 0.1s;">
         <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
 
-        </div>
         <ol id="recipe-steps-wrap" class="instructions-list">
           <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Boil the eggs.</strong> Bring water to a boil. Gently lower eggs in with a spoon. Timer: exactly 7 minutes.</p></li>
           <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Ice bath.</strong> Remove eggs immediately to a bowl of ice water + cold water. Rest 5 minutes.</p></li>
@@ -477,10 +475,21 @@
       var stepsEl = document.getElementById('recipe-steps-wrap');
       var chefEl = document.querySelector('.chefs-note-text');
       var brainEl = document.querySelector('.psycho-note-text');
+      var ingGroupTitle = ingEl ? ingEl.querySelector('.ingredient-group-title') : null;
+      var ingList = ingEl ? ingEl.querySelector('.ingredients-list') : null;
 
       if (titleEl) titleEl.textContent = c.title;
       if (crumbEl) crumbEl.textContent = c.crumb;
-      if (ingEl) ingEl.innerHTML = c.ingredients;
+      // Safely swap ingredients: only replace inner content, not the wrapper
+      if (ingEl) {
+        // Create a temp container to parse HTML safely
+        var tmp = document.createElement('div');
+        tmp.innerHTML = c.ingredients;
+        // Clear only the group titles and lists inside the wrap
+        Array.from(ingEl.querySelectorAll('.ingredient-group-title, .ingredients-list')).forEach(function(el) { el.remove(); });
+        // Insert new content from temp
+        Array.from(tmp.childNodes).forEach(function(node) { ingEl.appendChild(node.cloneNode(true)); });
+      }
       if (stepsEl) stepsEl.innerHTML = c.steps;
       if (chefEl) chefEl.innerHTML = '\u201c' + c.chef_note + '\u201d';
       if (brainEl) brainEl.textContent = c.brain_note;
