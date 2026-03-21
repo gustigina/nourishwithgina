@@ -182,14 +182,26 @@ const NWG_TRANSLATIONS = {
   }
 
   function updateToggleUI(lang) {
+    // Navbar desktop button
     const btn = document.getElementById('langToggleBtn');
-    if (!btn) return;
-    if (lang === 'en') {
-      btn.innerHTML = '🇮🇩 <span>ID</span>';
-      btn.title = 'Ganti ke Bahasa Indonesia';
-    } else {
-      btn.innerHTML = '🇺🇸 <span>EN</span>';
-      btn.title = 'Switch to English';
+    if (btn) {
+      if (lang === 'en') {
+        btn.innerHTML = '🇮🇩 <span>ID</span>';
+        btn.title = 'Ganti ke Bahasa Indonesia';
+      } else {
+        btn.innerHTML = '🇺🇸 <span>EN</span>';
+        btn.title = 'Switch to English';
+      }
+    }
+    // Floating button
+    const floating = document.getElementById('floatingLangInner');
+    if (floating) {
+      floating.innerHTML = lang === 'en' ? '🇮🇩 ID' : '🇺🇸 EN';
+    }
+    // Mobile nav button
+    const mob = document.getElementById('mobileLangBtn');
+    if (mob) {
+      mob.innerHTML = lang === 'en' ? '🇮🇩 ID' : '🇺🇸 EN';
     }
   }
 

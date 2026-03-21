@@ -128,6 +128,7 @@
     <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
     <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
     <a href="index.html#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
+    <button onclick="window.__nwgToggleLang();closeMobileNav?closeMobileNav():null" id="mobileLangBtn" style="background:none;border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:8px 20px;color:inherit;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:0.5rem;letter-spacing:0.05em;">🇮🇩 ID</button>
   </div>
 
 
@@ -435,6 +436,9 @@
   </script>
 
   <script src="cursor.js"></script>
+
+  <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
+  <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
   <script src="lang.js"></script>
 </body>
