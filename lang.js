@@ -220,6 +220,12 @@ const NWG_TRANSLATIONS = {
     setLang(current === 'en' ? 'id' : 'en');
   };
 
+  // Expose applyLang for recipe pages to call directly
+  window.__nwgApplyLang = function(lang) {
+    applyLang(lang);
+    updateToggleUI(lang);
+  };
+
   // Init on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
     injectToggleButton();

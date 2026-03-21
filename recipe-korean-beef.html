@@ -489,14 +489,18 @@
       applyRecipeContent(lang);
     }
 
-    // Run as soon as possible
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initRecipeLang);
-    } else {
-      initRecipeLang();
-    }
+    // Run on DOMContentLoaded (lang.js also fires then — order is cursor.js → recipe script → lang.js)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Small delay to ensure lang.js has run first
+      setTimeout(function() {
+        var lang = localStorage.getItem('nwg_lang') || 'en';
+        applyRecipeContent(lang);
+        // Also trigger data-i18n elements via lang.js if available
+        if (window.__nwgApplyLang) window.__nwgApplyLang(lang);
+      }, 50);
+    });
 
-    // Also re-apply when lang toggle is clicked
+    // Re-apply when lang toggle is clicked
     document.addEventListener('nwg_lang_change', function(e) {
       applyRecipeContent(e.detail);
     });
