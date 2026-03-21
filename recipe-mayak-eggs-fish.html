@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayak Eggs — Fish Sauce — NourishWithGina</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra page-specific styles */
+    .recipe-content {
+      max-width: 100%;
+    }
+
+    .ingredient-group-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--terracotta);
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 400;
+    }
+
+    .recipe-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(44, 26, 14, 0.08);
+      margin: 2.5rem 0;
+    }
+
+    /* Sticky sidebar override for desktop */
+    @media (min-width: 901px) {
+      .recipe-sidebar {
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--terracotta-light) transparent;
+      }
+    }
+
+    /* Related recipes teaser */
+    .related-section {
+      background: var(--cream);
+      padding: 5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .related-card {
+      display: flex;
+      gap: 1rem;
+      background: var(--offwhite);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(44,26,14,0.07);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .related-card-img {
+      width: 120px;
+      height: 100%;
+      min-height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .related-card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .related-card-cat {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.3rem;
+    }
+
+    .related-card-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--darkbrown);
+    }
+
+    @media (max-width: 700px) {
+      .related-section { padding: 3rem 2rem; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+  </div>
+
+
+  <!-- ============ RECIPE HERO ============ -->
+  <section class="recipe-hero">
+    <img
+      class="recipe-hero-img"
+      src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=1600&q=85"
+      alt="Mayak Eggs — Fish Sauce"
+    />
+    <div class="recipe-hero-overlay"></div>
+
+    <div class="recipe-hero-nav">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="recipes.html">Recipes</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: var(--cream); opacity: 0.9;">Mayak Eggs — Fish Sauce</span>
+      </nav>
+    </div>
+
+    <div class="recipe-hero-title-wrap">
+      <h1 class="recipe-hero-title">Mayak Eggs — Fish Sauce</h1>
+    </div>
+  </section>
+
+
+  <!-- ============ QUICK STATS BAR ============ -->
+  <div class="stats-bar">
+    <div class="stat-pill">
+      <span class="stat-pill-icon">⏱</span>
+      <span class="stat-pill-text">10 min + overnight</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">👤</span>
+      <span class="stat-pill-text">10 eggs</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">🔥</span>
+      <span class="stat-pill-text">160 kcal (2 eggs)</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">💪</span>
+      <span class="stat-pill-text">14g protein</span>
+    </div>
+  </div>
+
+
+  <!-- ============ RECIPE CONTENT ============ -->
+  <div class="recipe-content">
+
+    <!-- LEFT — Main content -->
+    <div class="recipe-main">
+
+      <!-- Ingredients -->
+      <section class="fade-in">
+        <h2 class="recipe-section-title">Ingredients</h2>
+        <div class="ingredient-group-title">The eggs</div>
+        <ul class="ingredients-list">
+          <li>10 eggs</li>
+        </ul>
+        <div class="ingredient-group-title">The marinade sauce</div>
+        <ul class="ingredients-list">
+          <li>5 tbsp fish sauce</li>
+          <li>5 tbsp water</li>
+          <li>1 tbsp sesame oil</li>
+          <li>1 tbsp honey</li>
+          <li>3 garlic cloves, minced</li>
+          <li>2 spring onions, sliced</li>
+          <li>1 chili, sliced (optional)</li>
+          <li>1 tsp sesame seeds</li>
+          <li>2–3 thin lemon slices + juice of ½ lemon</li>
+          <li>3–4 thin ginger slices</li>
+        </ul>
+
+        
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Instructions -->
+      <section class="fade-in" style="transition-delay: 0.1s;">
+        <h2 class="recipe-section-title">How to make it</h2>
+
+        <ol class="instructions-list">
+          <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Boil the eggs.</strong> Bring water to a boil. Gently lower eggs in with a spoon. Timer: exactly 7 minutes.</p></li>
+          <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Ice bath.</strong> Remove eggs immediately to a bowl of ice water + cold water. Rest 5 minutes.</p></li>
+          <li class="instruction-item"><span class="instruction-number">03</span><p class="instruction-text"><strong>Peel under water.</strong> Peel each egg while submerged — the water gets under the membrane and the shell comes off cleanly.</p></li>
+          <li class="instruction-item"><span class="instruction-number">04</span><p class="instruction-text"><strong>Mix the fish sauce marinade.</strong> Combine fish sauce, water, sesame oil, honey, minced garlic, spring onions, lemon slices and juice, ginger, and sesame seeds. Stir well. Do not add extra salt.</p></li>
+          <li class="instruction-item"><span class="instruction-number">05</span><p class="instruction-text"><strong>Marinate overnight.</strong> Add eggs to container or ziplock. Pour marinade over. Minimum 4 hours in fridge — overnight is best. The fish sauce penetrates deeper and the flavor is more complex.</p></li>
+        </ol>
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Chef's note -->
+      <section class="fade-in" style="transition-delay: 0.2s;">
+        <div class="chefs-note">
+          <div class="chefs-note-label">🌿 Chef's Note from Gina</div>
+          <p class="chefs-note-text">
+            "Fish sauce version is more complex and umami-forward. Do not add extra salt — fish sauce is already very salty. Use lemon, not vinegar — fish sauce and lemon is a classic Southeast Asian combo that just works."
+          </p>
+        </div>
+      </section>
+
+    </div><!-- end recipe-main -->
+
+
+    <!-- RIGHT — Sticky Sidebar -->
+    <aside class="recipe-sidebar">
+
+      <!-- The Verdict — Barometers -->
+      <div class="sidebar-card fade-in-right">
+        <h3 class="sidebar-card-title">The Verdict</h3>
+        <div class="barometer-list">
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Taste Guilty</span>
+              <span class="barometer-score">8.8/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill taste" style="--fill-width: 88%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Clean Factor</span>
+              <span class="barometer-score">9.2/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill clean" style="--fill-width: 78%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Mood Boost</span>
+              <span class="barometer-score">8.2/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill mood" style="--fill-width: 82%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Energy Level</span>
+              <span class="barometer-score">9.0/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill energy" style="--fill-width: 90%;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nutrition -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.15s;">
+        <h3 class="sidebar-card-title">Nutrition</h3>
+        <div class="nutrition-big">
+          <div class="nutrition-kcal">160</div>
+          <div class="nutrition-kcal-label">calories per serving</div>
+          <div class="nutrition-macros">
+            <div class="macro-item">
+              <div class="macro-value">14g</div>
+              <div class="macro-label">Protein</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">2g</div>
+              <div class="macro-label">Carbs</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">10g</div>
+              <div class="macro-label">Fat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Psychonutrition note -->
+      <div class="psycho-note fade-in-right" style="transition-delay: 0.25s;">
+        <div class="psycho-note-label">🧠 Brain Food Note</div>
+        <p class="psycho-note-text">
+          Fish sauce is fermented — meaning it contains naturally occurring glutamates that support neurotransmitter production. Combined with egg choline, this version is slightly more neuroprotective than the soy sauce version. Yes, really.
+        </p>
+      </div>
+
+      <!-- Best Eaten When -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.35s;">
+        <h3 class="sidebar-card-title">Best Eaten When</h3>
+        <div class="mood-tags">
+          <div class="mood-tag-item"><span class="mood-tag-icon">✨</span>Umami upgrade</div>
+<div class="mood-tag-item"><span class="mood-tag-icon">💪</span>Protein bomb</div>
+        </div>
+      </div>
+
+    </aside><!-- end sidebar -->
+
+  </div><!-- end recipe-content -->
+
+
+  <!-- ============ RELATED RECIPES ============ -->
+  <section class="related-section">
+    <div class="section-header fade-in">
+      <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 4rem);">More recipes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="related-grid">
+      <a href="recipe-korean-beef.html" class="related-card">
+        <img class="related-card-img" src="photos/beef-bowl.jpg" alt="Korean Beef Bulgogi" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">Main dish · 30 min</div>
+          <div class="related-card-title">Korean Beef Bulgogi</div>
+        </div>
+      </a>
+      <a href="recipe-tuna-seared.html" class="related-card">
+        <img class="related-card-img" src="photos/tuna-seared.jpg" alt="Pan Seared Tuna" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">Main dish · 15 min</div>
+          <div class="related-card-title">Pan Seared Tuna</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline">Taste guilty, but it isn't.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 NourishWithGina. All rights reserved.</span>
+      <span class="footer-sign">Taste guilty, but it isn't. 🌿</span>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // ——— Nav scroll ———
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ——— Hamburger ———
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // ——— IntersectionObserver: fade-ins ———
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ——— Barometer animation ———
+    const fills = document.querySelectorAll('.barometer-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Stagger each fill slightly
+          const delay = Array.from(fills).indexOf(entry.target) * 120;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    fills.forEach(f => barObserver.observe(f));
+
+    // ——— Hero parallax ———
+    const heroImg = document.querySelector('.recipe-hero-img');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroImg.style.transform = `scale(1.05) translateY(${scrolled * 0.2}px)`;
+      }
+    }, { passive: true });
+  </script>
+
+  <script src="cursor.js"></script>
+  <script src="cursor.js"></script>
+</body>
+</html>
