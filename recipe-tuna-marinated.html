@@ -113,9 +113,9 @@
   <nav class="nav" id="mainNav">
     <a href="index.html" class="nav-logo">NourishWithGina</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="recipes.html">Recipes</a></li>
-      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="recipes.html" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a></li>
+      <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -125,9 +125,9 @@
   <!-- Mobile nav overlay -->
   <div class="nav-mobile" id="mobileNav">
     <button class="nav-mobile-close" id="navClose">✕</button>
-    <a href="index.html" onclick="closeMobileNav()">Home</a>
-    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
-    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
   </div>
 
 
@@ -144,7 +144,7 @@
       <nav class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="breadcrumb-sep">›</span>
-        <a href="recipes.html">Recipes</a>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
         <span class="breadcrumb-sep">›</span>
         <span style="color: var(--cream); opacity: 0.9;">Marinated Sesame Tuna</span>
       </nav>
@@ -185,7 +185,7 @@
 
       <!-- Ingredients -->
       <section class="fade-in">
-        <h2 class="recipe-section-title">Ingredients</h2>
+        <h2 class="recipe-section-title" data-i18n="recipe_section_ingredients">Ingredients</h2>
         <div class="ingredient-group-title">The tuna + marinade</div>
         <ul class="ingredients-list">
           <li>200g tuna steak</li>
@@ -203,7 +203,7 @@
 
       <!-- Instructions -->
       <section class="fade-in" style="transition-delay: 0.1s;">
-        <h2 class="recipe-section-title">How to make it</h2>
+        <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
 
         <ol class="instructions-list">
           <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Mix the marinade.</strong> Combine soy sauce, sesame oil, lime juice, and honey. Stir well.</p></li>
@@ -240,7 +240,7 @@
 
           <div class="barometer-item">
             <div class="barometer-header">
-              <span class="barometer-label">Taste Guilty</span>
+              <span class="barometer-label" data-i18n="recipe_barometer_taste">Taste Guilty</span>
               <span class="barometer-score">8.5/10</span>
             </div>
             <div class="barometer-track">
@@ -250,7 +250,7 @@
 
           <div class="barometer-item">
             <div class="barometer-header">
-              <span class="barometer-label">Clean Factor</span>
+              <span class="barometer-label" data-i18n="recipe_barometer_clean">Clean Factor</span>
               <span class="barometer-score">9.5/10</span>
             </div>
             <div class="barometer-track">
@@ -260,7 +260,7 @@
 
           <div class="barometer-item">
             <div class="barometer-header">
-              <span class="barometer-label">Mood Boost</span>
+              <span class="barometer-label" data-i18n="recipe_barometer_mood">Mood Boost</span>
               <span class="barometer-score">8.2/10</span>
             </div>
             <div class="barometer-track">
@@ -290,15 +290,15 @@
           <div class="nutrition-macros">
             <div class="macro-item">
               <div class="macro-value">27g</div>
-              <div class="macro-label">Protein</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_protein">Protein</div>
             </div>
             <div class="macro-item">
               <div class="macro-value">3g</div>
-              <div class="macro-label">Carbs</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_carbs">Carbs</div>
             </div>
             <div class="macro-item">
               <div class="macro-value">3g</div>
-              <div class="macro-label">Fat</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_fat">Fat</div>
             </div>
           </div>
         </div>
@@ -357,17 +357,17 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">NourishWithGina</div>
-        <div class="footer-tagline">Taste guilty, but it isn't.</div>
+        <div class="footer-tagline" data-i18n="footer_tagline">Taste guilty, but it isn't.</div>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
-        <a href="recipes.html">Recipes</a>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
         <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 NourishWithGina. All rights reserved.</span>
-      <span class="footer-sign">Taste guilty, but it isn't. 🌿</span>
+      <span class="footer-copy" data-i18n="footer_copy">Made with love & science by Gina</span>
+      <span class="footer-sign" data-i18n="footer_sign">Taste guilty, but it isn't. 🌿</span>
     </div>
   </footer>
 
@@ -428,5 +428,6 @@
 
   <script src="cursor.js"></script>
   <script src="cursor.js"></script>
+  <script src="lang.js"></script>
 </body>
 </html>

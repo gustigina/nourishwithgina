@@ -12,9 +12,9 @@
   <nav class="nav" id="mainNav">
     <a href="index.html" class="nav-logo">NourishWithGina</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="recipes.html">Recipes</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="recipes.html" data-i18n="nav_recipes">Recipes</a></li>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -24,9 +24,9 @@
   <!-- Mobile nav overlay -->
   <div class="nav-mobile" id="mobileNav">
     <button class="nav-mobile-close" id="navClose">✕</button>
-    <a href="index.html" onclick="closeMobileNav()">Home</a>
-    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
-    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes">Recipes</a>
+    <a href="#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
   </div>
 
 
@@ -58,25 +58,25 @@
   <section class="intro">
     <div class="fade-in-left">
       <blockquote class="intro-quote">
-        "I cook because healing starts in the kitchen."
+        <span data-i18n="intro_quote">"I cook because healing starts in the kitchen."</span>
       </blockquote>
       <p class="intro-body">
-        Every recipe here is backed by science, driven by flavor, and made with the belief that food should love you back. No guilt. No restriction. Just real food that makes you feel alive.
+        <span data-i18n="intro_body">Every recipe here is backed by science, driven by flavor, and made with the belief that food should love you back. No guilt. No restriction. Just real food that makes you feel alive.</span>
       </p>
     </div>
 
     <div class="intro-stats fade-in-right">
       <div class="stat-item">
         <span class="stat-number">11</span>
-        <span class="stat-label">Curated Recipes</span>
+        <span class="stat-label" data-i18n="stat_recipes">Curated Recipes</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">100%</span>
-        <span class="stat-label">Clean Ingredients</span>
+        <span class="stat-label" data-i18n="stat_clean">Clean Ingredients</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">0</span>
-        <span class="stat-label">Guilt</span>
+        <span class="stat-label" data-i18n="stat_guilt">Guilt</span>
       </div>
     </div>
   </section>
@@ -85,7 +85,7 @@
   <!-- ============ SECTION 3 — FEATURED RECIPES ============ -->
   <section class="recipes-section">
     <div class="section-header fade-in">
-      <h2 class="section-title">The Recipes</h2>
+      <h2 class="section-title" data-i18n="section_recipes">The Recipes</h2>
       <div class="section-line"></div>
     </div>
 
@@ -101,25 +101,25 @@
         />
         <div class="recipe-card-overlay"></div>
         <div class="recipe-card-base">
-          <div class="recipe-card-sub">Main dish · 30 min</div>
+          <div class="recipe-card-sub" data-i18n="card_korean_sub">Main dish · 30 min</div>
           <h3 class="recipe-card-title">Korean Beef Bowl</h3>
         </div>
         <div class="recipe-card-hover-content">
           <div class="card-barometers">
             <div class="card-bar-row">
-              <span class="card-bar-label">Taste guilty</span>
+              <span class="card-bar-label" data-i18n="card_taste_guilty">Taste guilty</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill taste" style="--fill-width: 85%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Clean factor</span>
+              <span class="card-bar-label" data-i18n="card_clean_factor">Clean factor</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill clean" style="--fill-width: 78%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Mood boost</span>
+              <span class="card-bar-label" data-i18n="card_mood_boost">Mood boost</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill mood" style="--fill-width: 82%;"></div>
               </div>
@@ -129,7 +129,7 @@
             <span class="card-tag">💪 Post-workout</span>
             <span class="card-tag">🌙 Date night</span>
           </div>
-          <a href="recipe-template.html" class="card-cta">View Recipe →</a>
+          <a href="recipe-template.html" class="card-cta" data-i18n="card_view">View Recipe →</a>
         </div>
       </article>
 
@@ -143,25 +143,25 @@
         />
         <div class="recipe-card-overlay"></div>
         <div class="recipe-card-base">
-          <div class="recipe-card-sub">Main dish · 20 min</div>
+          <div class="recipe-card-sub" data-i18n="card_tuna_mar_sub">Main dish · 20 min</div>
           <h3 class="recipe-card-title">Marinated Sesame Tuna</h3>
         </div>
         <div class="recipe-card-hover-content">
           <div class="card-barometers">
             <div class="card-bar-row">
-              <span class="card-bar-label">Taste guilty</span>
+              <span class="card-bar-label" data-i18n="card_taste_guilty">Taste guilty</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill taste" style="--fill-width: 85%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Clean factor</span>
+              <span class="card-bar-label" data-i18n="card_clean_factor">Clean factor</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill clean" style="--fill-width: 95%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Mood boost</span>
+              <span class="card-bar-label" data-i18n="card_mood_boost">Mood boost</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill mood" style="--fill-width: 88%;"></div>
               </div>
@@ -171,7 +171,7 @@
             <span class="card-tag">🌙 Date night</span>
             <span class="card-tag">💪 High protein</span>
           </div>
-          <a href="recipes.html" class="card-cta">View Recipe →</a>
+          <a href="recipes.html" class="card-cta" data-i18n="card_view">View Recipe →</a>
         </div>
       </article>
 
@@ -185,25 +185,25 @@
         />
         <div class="recipe-card-overlay"></div>
         <div class="recipe-card-base">
-          <div class="recipe-card-sub">Snack · 12 min</div>
+          <div class="recipe-card-sub" data-i18n="card_cherry_sub">Snack · 12 min</div>
           <h3 class="recipe-card-title">Air Fryer Cherry Tomato</h3>
         </div>
         <div class="recipe-card-hover-content">
           <div class="card-barometers">
             <div class="card-bar-row">
-              <span class="card-bar-label">Taste guilty</span>
+              <span class="card-bar-label" data-i18n="card_taste_guilty">Taste guilty</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill taste" style="--fill-width: 60%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Clean factor</span>
+              <span class="card-bar-label" data-i18n="card_clean_factor">Clean factor</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill clean" style="--fill-width: 95%;"></div>
               </div>
             </div>
             <div class="card-bar-row">
-              <span class="card-bar-label">Mood boost</span>
+              <span class="card-bar-label" data-i18n="card_mood_boost">Mood boost</span>
               <div class="card-bar-track">
                 <div class="card-bar-fill mood" style="--fill-width: 70%;"></div>
               </div>
@@ -212,7 +212,7 @@
           <div class="card-tags">
             <span class="card-tag">🥗 Light snack</span>
           </div>
-          <a href="recipes.html" class="card-cta">View Recipe →</a>
+          <a href="recipes.html" class="card-cta" data-i18n="card_view">View Recipe →</a>
         </div>
       </article>
 
@@ -223,7 +223,7 @@
   <!-- ============ SECTION 4 — QUOTE STRIP ============ -->
   <section class="quote-strip">
     <p class="quote-strip-text fade-in">
-      "Food should make you feel alive, not guilty."
+      <span data-i18n="section_quote">"Food should make you feel alive, not guilty."</span>
     </p>
     <p class="quote-strip-attr">— NourishWithGina</p>
   </section>
@@ -232,12 +232,12 @@
   <!-- ============ SECTION 5 — PSYCHONUTRITION ============ -->
   <section class="psycho-section">
     <div class="psycho-content fade-in-left">
-      <div class="psycho-label">The science behind the plate</div>
-      <h2 class="psycho-heading">Food is medicine.</h2>
+      <div class="psycho-label" data-i18n="psycho_label">The science behind the plate</div>
+      <h2 class="psycho-heading" data-i18n="psycho_heading">Food is medicine.</h2>
       <p class="psycho-body">
-        <strong>Psychonutrition</strong> is the study of how food affects your mind. Every ingredient I choose — the leafy greens, the fermented foods, the good fats — is picked not just for flavor, but for what it does to your brain chemistry.
+        <span data-i18n="psycho_body"><strong>Psychonutrition</strong> is the study of how food affects your mind. Every ingredient I choose — the leafy greens, the fermented foods, the good fats — is picked not just for flavor, but for what it does to your brain chemistry.
         <br><br>
-        Serotonin, dopamine, cortisol — all of it is shaped by what you eat. When you nourish your body right, you nourish your whole self. That's what these recipes are about.
+        Serotonin, dopamine, cortisol — all of it is shaped by what you eat. When you nourish your body right, you nourish your whole self. That's what these recipes are about.</span>
       </p>
     </div>
     <div class="psycho-emoji-side fade-in-right">
@@ -367,7 +367,7 @@
     </div>
 
     <div class="about-content fade-in-right">
-      <div class="about-label">The Cook</div>
+      <div class="about-label" data-i18n="about_label">About</div>
       <h2 class="about-name">Gusti Gina</h2>
       <p class="about-bio">
         Actress. Writer. Content creator. And someone who learned that healing can start at the dinner table. I came to cooking not from culinary school, but from survival — and somewhere along the way, it became my most honest form of self-expression.
@@ -382,17 +382,17 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">NourishWithGina</div>
-        <div class="footer-tagline">Taste guilty, but it isn't.</div>
+        <div class="footer-tagline" data-i18n="footer_tagline">Taste guilty, but it isn't.</div>
       </div>
       <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="recipes.html">Recipes</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="recipes.html" data-i18n="nav_recipes">Recipes</a>
         <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 NourishWithGina. All rights reserved.</span>
-      <span class="footer-sign">Taste guilty, but it isn't. 🌿</span>
+      <span class="footer-copy" data-i18n="footer_copy">Made with love & science by Gina</span>
+      <span class="footer-sign" data-i18n="footer_sign">Taste guilty, but it isn't. 🌿</span>
     </div>
   </footer>
 
@@ -471,6 +471,7 @@
 
   </script>
   <script src="cursor.js"></script>
+  <script src="lang.js"></script>
 
 </body>
 </html>
