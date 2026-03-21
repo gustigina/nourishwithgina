@@ -361,43 +361,8 @@
 
     fadeEls.forEach(el => sectionObserver.observe(el));
 
-    // ——— Trailing Leaves Cursor ———
-    const leafEmojis = ['🌿', '🍃', '✿', '🌱', '🍀', '🌾'];
-    let lastLeafTime = 0;
-
-    function createLeaf(x, y) {
-      const leaf = document.createElement('div');
-      leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
-      leaf.style.cssText = `
-        position: fixed;
-        left: ${x}px;
-        top: ${y}px;
-        pointer-events: none;
-        font-size: ${10 + Math.random() * 12}px;
-        opacity: 1;
-        z-index: 99999;
-        transition: all ${0.8 + Math.random() * 0.6}s ease-out;
-        transform: translate(-50%, -50%) rotate(${Math.random() * 360}deg);
-        will-change: transform, opacity;
-      `;
-      document.body.appendChild(leaf);
-
-      requestAnimationFrame(() => {
-        leaf.style.opacity = '0';
-        leaf.style.transform = `translate(${-20 + Math.random() * 40}px, ${-30 - Math.random() * 40}px) rotate(${Math.random() * 360}deg) scale(0.5)`;
-      });
-
-      setTimeout(() => leaf.remove(), 1400);
-    }
-
-    document.addEventListener('mousemove', (e) => {
-      const now = Date.now();
-      if (now - lastLeafTime > 80) {
-        createLeaf(e.clientX, e.clientY);
-        lastLeafTime = now;
-      }
-    });
   </script>
+  <script src="cursor.js"></script>
 
 </body>
 </html>
