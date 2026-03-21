@@ -645,6 +645,12 @@
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
 
+    // Fallback: show all after 2.5s
+    setTimeout(() => {
+      fadeEls.forEach(el => el.classList.add('visible'));
+      bars.forEach(bar => bar.classList.add('visible'));
+    }, 2500);
+
     // ——— Bar animation ———
     const bars = document.querySelectorAll('.masonry-bar-fill');
     const barObserver = new IntersectionObserver((entries) => {

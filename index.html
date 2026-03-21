@@ -465,9 +465,14 @@
           sectionObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.08 });
 
     fadeEls.forEach(el => sectionObserver.observe(el));
+
+    // Fallback: show all elements after 2.5s in case observer doesn't fire
+    setTimeout(() => {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }, 2500);
 
   </script>
   <script src="cursor.js"></script>

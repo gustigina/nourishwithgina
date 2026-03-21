@@ -399,6 +399,12 @@
     }, { threshold: 0.12 });
     fadeEls.forEach(el => observer.observe(el));
 
+    // Fallback: show all after 2.5s
+    setTimeout(() => {
+      fadeEls.forEach(el => el.classList.add('visible'));
+      document.querySelectorAll('.barometer-fill').forEach(el => el.classList.add('visible'));
+    }, 2500);
+
     // ——— Barometer animation ———
     const fills = document.querySelectorAll('.barometer-fill');
     const barObserver = new IntersectionObserver((entries) => {
