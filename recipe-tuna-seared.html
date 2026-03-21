@@ -440,6 +440,60 @@
   <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
   <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Pan Seared Tuna",
+        hero_sub: "Main dish \u00b7 15 min",
+        crumb: "Pan Seared Tuna",
+        ingredients: "<div class=\"ingredient-group-title\">The tuna</div>\n        <ul class=\"ingredients-list\"><li>180\u2013200g frozen tuna (thawed)</li><li>\u00bd tsp smoked paprika</li><li>\u00bc tsp salt</li><li>\u00bc tsp black pepper</li><li>1 tsp olive oil</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Thaw properly.</strong> Place tuna (still in packaging or ziplock) in cold water for 20\u201330 minutes. Do not use warm water \u2014 it cooks the outer layer unevenly.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Pat completely dry.</strong> This is the most critical step. Use paper towel, press firmly, repeat. Dry = sear. Wet = steam. They are completely different results.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Season.</strong> Coat with smoked paprika, salt, pepper, and a thin layer of olive oil. Rub it in with your hands.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Screaming hot pan.</strong> No extra oil. High heat. The pan must be very hot before the tuna touches it.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Sear 2 minutes.</strong> Place tuna, do not touch, do not press. Let it sear undisturbed for 2 full minutes.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>Flip once.</strong> 1.5\u20132 minutes on the other side. Remove. Pink inside is perfect \u2014 that is how tuna is meant to be eaten.</p></li>",
+        chef_note: "Dry = sear. Wet = steam. Pat it like you mean it. Pink inside is not raw \u2014 tuna is meant to be served medium. Trust the process.",
+        brain_note: "Tuna is one of the richest sources of omega-3 DHA \u2014 the fat your brain is literally built from. One serving delivers nearly your full daily need. Eat it for clarity, not just protein.",
+      },
+      id: {
+        title: "Tuna Panggang Pan",
+        hero_sub: "Hidangan utama \u00b7 15 mnt",
+        crumb: "Tuna Panggang Pan",
+        ingredients: "<div class=\"ingredient-group-title\">Bahan tuna</div>\n        <ul class=\"ingredients-list\"><li>180\u2013200g tuna beku (dicairkan)</li><li>\u00bd sdt smoked paprika</li><li>\u00bc sdt garam</li><li>\u00bc sdt lada hitam</li><li>1 sdt minyak zaitun</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Cairkan dengan benar.</strong> Rendam tuna (masih dalam kemasan atau ziplock) dalam air dingin selama 20\u201330 menit. Jangan pakai air hangat \u2014 akan memasak lapisan luar secara tidak merata.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Keringkan sampai benar-benar kering.</strong> Ini langkah paling penting. Pakai tisu dapur, tekan kuat, ulangi. Kering = sear. Basah = dikukus. Hasilnya benar-benar berbeda.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Bumbui.</strong> Balur dengan smoked paprika, garam, lada, dan lapisan tipis minyak zaitun. Gosokkan dengan tangan.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Wajan harus sangat panas.</strong> Tanpa minyak tambahan. Api besar. Wajan harus sangat panas sebelum tuna menyentuhnya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Sear 2 menit.</strong> Letakkan tuna, jangan disentuh, jangan ditekan. Biarkan sear tanpa diganggu selama 2 menit penuh.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>Balik sekali.</strong> 1.5\u20132 menit di sisi lainnya. Angkat. Merah muda di dalam adalah sempurna \u2014 begitulah tuna seharusnya dimakan.</p></li>",
+        chef_note: "Kering = sear. Basah = dikukus. Keringkan sungguh-sungguh. Merah muda di dalam bukan berarti mentah \u2014 tuna memang seharusnya disajikan medium. Percaya prosesnya.",
+        brain_note: "Tuna adalah salah satu sumber omega-3 DHA terkaya \u2014 lemak yang otakmu secara harfiah dibangun darinya. Satu porsi memenuhi hampir kebutuhan harianmu. Makan untuk kejernihan pikiran, bukan sekadar protein.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
+      var stepsEl = document.querySelector('.instructions-list');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      if (ingEl) ingEl.innerHTML = c.ingredients;
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply on load based on saved lang
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+      // Re-apply when lang changes
+      document.addEventListener('nwg_lang_change', function(e) {
+        applyRecipeContent(e.detail);
+      });
+    });
+  })();
+  </script>
   <script src="lang.js"></script>
 </body>
 </html>

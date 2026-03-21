@@ -440,6 +440,60 @@
   <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
   <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Marinated Sesame Tuna",
+        hero_sub: "Main dish \u00b7 20 min",
+        crumb: "Marinated Sesame Tuna",
+        ingredients: "<div class=\"ingredient-group-title\">The tuna + marinade</div>\n        <ul class=\"ingredients-list\"><li>200g tuna steak</li><li>1.5 tbsp soy sauce</li><li>1.5 tsp sesame oil</li><li>Juice of \u00bd lime</li><li>1 tsp honey (optional)</li><li>\u00bd tsp smoked paprika (optional)</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Mix the marinade.</strong> Combine soy sauce, sesame oil, lime juice, and honey. Stir well.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Marinate the tuna.</strong> Coat the tuna in marinade and let it rest 15\u201320 minutes. The lime juice starts to work on the protein.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Remove and keep the marinade.</strong> Take the tuna out. Keep every drop of the marinade in the bowl \u2014 you will need it.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Sear in a hot dry pan.</strong> Very hot, no oil. 90 seconds on first side \u2014 do not touch.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Flip.</strong> 90 seconds on the other side.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>The secret finish.</strong> Pour the reserved marinade over the tuna in the pan. Toss for 30 seconds until it glazes and caramelizes. Remove immediately. This is the moment.</p></li>",
+        chef_note: "The reserved marinade poured at the end is the secret. It creates a glossy caramelized sauce in seconds. Anders invented this move and it changed everything.",
+        brain_note: "Sesame oil contains sesamol, a powerful antioxidant that crosses the blood-brain barrier. Combined with tuna omega-3s, this is genuinely one of the most neuroprotective meals you can make in 20 minutes.",
+      },
+      id: {
+        title: "Tuna Wijen Marinasi",
+        hero_sub: "Hidangan utama \u00b7 20 mnt",
+        crumb: "Tuna Wijen Marinasi",
+        ingredients: "<div class=\"ingredient-group-title\">Tuna + bumbu marinasi</div>\n        <ul class=\"ingredients-list\"><li>200g tuna steak</li><li>1.5 sdm kecap asin</li><li>1.5 sdt minyak wijen</li><li>Perasan \u00bd jeruk nipis</li><li>1 sdt madu (opsional)</li><li>\u00bd sdt smoked paprika (opsional)</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Buat marinade.</strong> Campur kecap asin, minyak wijen, perasan jeruk nipis, dan madu. Aduk rata.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Marinasi tuna.</strong> Balur tuna dengan marinade dan diamkan 15\u201320 menit. Perasan jeruk nipis mulai bekerja pada protein.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Angkat tuna, simpan marinade-nya.</strong> Keluarkan tuna. Simpan setiap tetes marinade di mangkuk \u2014 kamu akan membutuhkannya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Sear di wajan panas kering.</strong> Sangat panas, tanpa minyak. 90 detik di sisi pertama \u2014 jangan disentuh.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Balik.</strong> 90 detik di sisi lainnya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>Rahasia akhir.</strong> Tuangkan marinade yang disimpan ke atas tuna dalam wajan. Aduk 30 detik sampai mengkilap dan karamel. Angkat segera. Ini momennya.</p></li>",
+        chef_note: "Marinade sisa yang dituangkan di akhir adalah rahasianya. Saus karamel mengkilap terbentuk dalam hitungan detik. Anders yang menciptakan trik ini dan semuanya berubah.",
+        brain_note: "Minyak wijen mengandung sesamol, antioksidan kuat yang menembus sawar darah-otak. Dikombinasikan dengan omega-3 tuna, ini adalah salah satu makanan paling neuroprotektif yang bisa kamu buat dalam 20 menit.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
+      var stepsEl = document.querySelector('.instructions-list');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      if (ingEl) ingEl.innerHTML = c.ingredients;
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply on load based on saved lang
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+      // Re-apply when lang changes
+      document.addEventListener('nwg_lang_change', function(e) {
+        applyRecipeContent(e.detail);
+      });
+    });
+  })();
+  </script>
   <script src="lang.js"></script>
 </body>
 </html>

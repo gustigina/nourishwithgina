@@ -436,6 +436,60 @@
   <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
   <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Air Fryer Cherry Tomato",
+        hero_sub: "Snack \u00b7 12 min",
+        crumb: "Air Fryer Cherry Tomato",
+        ingredients: "<div class=\"ingredient-group-title\">Everything you need</div>\n        <ul class=\"ingredients-list\"><li>200g cherry tomatoes</li><li>1 tbsp olive oil</li><li>Salt, to taste</li><li>Dried oregano, to taste</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Wash and dry.</strong> Rinse the cherry tomatoes. Pat dry \u2014 they roast better when not wet.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Season.</strong> Toss with olive oil, salt, and dried oregano until coated.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Air fryer 180\u00b0C, 10\u201312 minutes.</strong> They are done when they burst open. That is the signal.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>No air fryer?</strong> Oven at 200\u00b0C for 15 minutes. Same result, slightly longer.</p></li>",
+        chef_note: "When they burst open and the juice caramelizes slightly \u2014 that is the moment. Goes on everything: pasta, bowls, or eaten straight from the tray. I make a batch every week.",
+        brain_note: "Cherry tomatoes are one of the highest sources of lycopene \u2014 an antioxidant that protects neurons from oxidative stress. Heat actually increases lycopene absorption by up to 3x. Roasting is literally making them better for your brain.",
+      },
+      id: {
+        title: "Tomat Ceri Air Fryer",
+        hero_sub: "Camilan \u00b7 12 mnt",
+        crumb: "Tomat Ceri Air Fryer",
+        ingredients: "<div class=\"ingredient-group-title\">Semua yang kamu butuhkan</div>\n        <ul class=\"ingredients-list\"><li>200g tomat ceri</li><li>1 sdm minyak zaitun</li><li>Garam secukupnya</li><li>Oregano kering secukupnya</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Cuci dan keringkan.</strong> Bilas tomat ceri. Keringkan \u2014 lebih baik dipanggang dalam keadaan tidak basah.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Bumbui.</strong> Campur dengan minyak zaitun, garam, dan oregano kering sampai semua terbalut.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Air fryer 180\u00b0C, 10\u201312 menit.</strong> Matang ketika mereka pecah terbuka. Itu tandanya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Tidak punya air fryer?</strong> Oven 200\u00b0C selama 15 menit. Hasilnya sama, sedikit lebih lama.</p></li>",
+        chef_note: "Saat mereka pecah terbuka dan airnya sedikit karamel \u2014 itulah momennya. Cocok untuk semua: pasta, bowls, atau dimakan langsung dari loyang. Aku buat setiap minggu.",
+        brain_note: "Tomat ceri adalah salah satu sumber likopen tertinggi \u2014 antioksidan yang melindungi neuron dari stres oksidatif. Panas justru meningkatkan penyerapan likopen hingga 3x. Memanggangnya secara harfiah membuatnya lebih baik untuk otakmu.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
+      var stepsEl = document.querySelector('.instructions-list');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      if (ingEl) ingEl.innerHTML = c.ingredients;
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply on load based on saved lang
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+      // Re-apply when lang changes
+      document.addEventListener('nwg_lang_change', function(e) {
+        applyRecipeContent(e.detail);
+      });
+    });
+  })();
+  </script>
   <script src="lang.js"></script>
 </body>
 </html>

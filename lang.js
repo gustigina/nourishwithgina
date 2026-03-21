@@ -162,6 +162,8 @@ const NWG_TRANSLATIONS = {
     localStorage.setItem('nwg_lang', lang);
     applyLang(lang);
     updateToggleUI(lang);
+    // Fire event so recipe pages can swap their content
+    document.dispatchEvent(new CustomEvent('nwg_lang_change', { detail: lang }));
   }
 
   function applyLang(lang) {

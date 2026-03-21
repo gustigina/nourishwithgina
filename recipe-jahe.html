@@ -437,6 +437,60 @@
   <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
   <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Rebusan Jahe + Madu Lemon",
+        hero_sub: "Healing drink \u00b7 15 min",
+        crumb: "Rebusan Jahe + Madu Lemon",
+        ingredients: "<div class=\"ingredient-group-title\">What you need</div>\n        <ul class=\"ingredients-list\"><li>Fresh ginger, sliced thin (3\u20134 cm piece)</li><li>1 tbsp honey (added after, not boiled)</li><li>Juice of \u00bd lemon</li><li>Water from gallon jug (not tap)</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Start ginger in cold water.</strong> Add sliced ginger to the water before it boils. This allows the gingerol to slowly extract into the water as temperature rises.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Boil 10\u201315 minutes.</strong> Let it simmer until the water turns golden. The stronger the color, the stronger the medicine.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Cool slightly.</strong> Remove from heat. Let it come down to warm \u2014 not boiling. If you can comfortably hold the cup, it is ready for honey.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Add honey and lemon.</strong> Stir in honey until dissolved. Squeeze in lemon juice. Drink slowly while warm.</p></li>",
+        chef_note: "Use gallon water, not tap. Add honey only when warm, not boiling \u2014 or the enzymes die and it is just sugar. Ginger goes in before boiling so it steeps properly from the start. This saved my voice when I was sick.",
+        brain_note: "Gingerol in fresh ginger is one of the most studied anti-inflammatory compounds in food science. It crosses the blood-brain barrier and actively reduces neuroinflammation \u2014 which is linked to brain fog, depression, and fatigue. This drink is medicine.",
+      },
+      id: {
+        title: "Rebusan Jahe + Madu Lemon",
+        hero_sub: "Minuman penyembuh \u00b7 15 mnt",
+        crumb: "Rebusan Jahe + Madu Lemon",
+        ingredients: "<div class=\"ingredient-group-title\">Yang kamu butuhkan</div>\n        <ul class=\"ingredients-list\"><li>Jahe segar, iris tipis (potongan 3\u20134 cm)</li><li>1 sdm madu (ditambahkan setelah matang, jangan direbus)</li><li>Perasan \u00bd lemon</li><li>Air dari galon (bukan air keran)</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Mulai dengan air dingin.</strong> Masukkan irisan jahe ke air sebelum mendidih. Ini memungkinkan gingerol perlahan larut ke dalam air seiring naiknya suhu.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Rebus 10\u201315 menit.</strong> Biarkan mendidih sampai airnya berwarna keemasan. Semakin kuat warnanya, semakin kuat khasiatnya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Dinginkan sedikit.</strong> Angkat dari api. Biarkan suhu turun ke hangat \u2014 bukan mendidih. Kalau kamu bisa memegang cangkirnya dengan nyaman, sudah siap untuk madu.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Tambahkan madu dan lemon.</strong> Aduk madu sampai larut. Peras air lemon. Minum pelan-pelan selagi hangat.</p></li>",
+        chef_note: "Pakai air galon, bukan air keran. Tambahkan madu hanya saat hangat, bukan mendidih \u2014 kalau tidak, enzimnya mati dan jadi gula biasa. Jahe masuk sebelum mendidih agar bisa menyeduh dengan benar dari awal. Ini yang menyelamatkan suaraku waktu sakit.",
+        brain_note: "Gingerol dalam jahe segar adalah salah satu senyawa anti-inflamasi yang paling banyak diteliti dalam ilmu pangan. Ia menembus sawar darah-otak dan secara aktif mengurangi neuroinflammasi \u2014 yang dikaitkan dengan brain fog, depresi, dan kelelahan. Minuman ini adalah obat.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
+      var stepsEl = document.querySelector('.instructions-list');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      if (ingEl) ingEl.innerHTML = c.ingredients;
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply on load based on saved lang
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+      // Re-apply when lang changes
+      document.addEventListener('nwg_lang_change', function(e) {
+        applyRecipeContent(e.detail);
+      });
+    });
+  })();
+  </script>
   <script src="lang.js"></script>
 </body>
 </html>

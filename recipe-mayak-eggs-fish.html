@@ -447,6 +447,60 @@
   <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
   <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:rgba(44,26,14,0.92);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:8px 16px;cursor:pointer;font-family:sans-serif;font-size:0.75rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 25px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'" id="floatingLangInner">🇮🇩 ID</div>
   <script src="cursor.js"></script>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Mayak Eggs \u2014 Fish Sauce",
+        hero_sub: "Breakfast \u00b7 10 min + overnight",
+        crumb: "Mayak Eggs \u2014 Fish Sauce",
+        ingredients: "<div class=\"ingredient-group-title\">The eggs</div>\n        <ul class=\"ingredients-list\"><li>10 eggs</li></ul>\n        <div class=\"ingredient-group-title\">The marinade sauce</div>\n        <ul class=\"ingredients-list\"><li>5 tbsp fish sauce</li><li>5 tbsp water</li><li>1 tbsp sesame oil</li><li>1 tbsp honey</li><li>3 garlic cloves, minced</li><li>2 spring onions, sliced</li><li>1 chili, sliced (optional)</li><li>1 tsp sesame seeds</li><li>2\u20133 thin lemon slices + juice of \u00bd lemon</li><li>3\u20134 thin ginger slices</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Boil the eggs.</strong> Bring water to a boil. Gently lower eggs in with a spoon. Timer: exactly 7 minutes.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Ice bath.</strong> Remove eggs immediately to a bowl of ice water + cold water. Rest 5 minutes.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Peel under water.</strong> Peel each egg while submerged \u2014 the water gets under the membrane and the shell comes off cleanly.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Mix the fish sauce marinade.</strong> Combine fish sauce, water, sesame oil, honey, minced garlic, spring onions, lemon slices and juice, ginger, and sesame seeds. Stir well. Do not add extra salt.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Marinate overnight.</strong> Add eggs to container or ziplock. Pour marinade over. Minimum 4 hours in fridge \u2014 overnight is best. The fish sauce penetrates deeper and the flavor is more complex.</p></li>",
+        chef_note: "Fish sauce version is more complex and umami-forward. Do not add extra salt \u2014 fish sauce is already very salty. Use lemon, not vinegar \u2014 fish sauce and lemon is a classic Southeast Asian combo that just works.",
+        brain_note: "Fish sauce is fermented \u2014 meaning it contains naturally occurring glutamates that support neurotransmitter production. Combined with egg choline, this version is slightly more neuroprotective than the soy sauce version. Yes, really.",
+      },
+      id: {
+        title: "Mayak Eggs \u2014 Kecap Ikan",
+        hero_sub: "Sarapan \u00b7 10 mnt + semalaman",
+        crumb: "Mayak Eggs \u2014 Kecap Ikan",
+        ingredients: "<div class=\"ingredient-group-title\">Telur</div>\n        <ul class=\"ingredients-list\"><li>10 butir telur</li></ul>\n        <div class=\"ingredient-group-title\">Saus marinasi</div>\n        <ul class=\"ingredients-list\"><li>5 sdm kecap ikan</li><li>5 sdm air</li><li>1 sdm minyak wijen</li><li>1 sdm madu</li><li>3 siung bawang putih, cincang</li><li>2 batang daun bawang, iris</li><li>1 cabai, iris (opsional)</li><li>1 sdt biji wijen</li><li>2\u20133 irisan lemon tipis + perasan \u00bd lemon</li><li>3\u20134 irisan jahe tipis</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Rebus telur.</strong> Didihkan air. Masukkan telur perlahan dengan sendok. Timer: tepat 7 menit.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Rendam di air es.</strong> Angkat telur segera ke mangkuk berisi air es + air dingin. Diamkan 5 menit.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Kupas di dalam air.</strong> Kupas setiap telur sambil terendam \u2014 air masuk ke bawah membran dan cangkang terkelupas bersih.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Buat marinasi kecap ikan.</strong> Campur kecap ikan, air, minyak wijen, madu, bawang putih cincang, daun bawang, irisan lemon dan perasannya, jahe, dan biji wijen. Aduk rata. Jangan tambahkan garam ekstra.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Marinasi semalaman.</strong> Masukkan telur ke wadah atau ziplock. Tuangkan marinasi. Minimal 4 jam di kulkas \u2014 semalaman terbaik. Kecap ikan meresap lebih dalam dan rasanya lebih kompleks.</p></li>",
+        chef_note: "Versi kecap ikan lebih kompleks dan kaya umami. Jangan tambahkan garam ekstra \u2014 kecap ikan sudah sangat asin. Pakai lemon, bukan cuka \u2014 kecap ikan dan lemon adalah kombinasi Asia Tenggara klasik yang selalu berhasil.",
+        brain_note: "Kecap ikan difermentasi \u2014 artinya mengandung glutamat alami yang mendukung produksi neurotransmitter. Dikombinasikan dengan kolin telur, versi ini sedikit lebih neuroprotektif dari versi kecap asin. Ya, serius.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
+      var stepsEl = document.querySelector('.instructions-list');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      if (ingEl) ingEl.innerHTML = c.ingredients;
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply on load based on saved lang
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+      // Re-apply when lang changes
+      document.addEventListener('nwg_lang_change', function(e) {
+        applyRecipeContent(e.detail);
+      });
+    });
+  })();
+  </script>
   <script src="lang.js"></script>
 </body>
 </html>
