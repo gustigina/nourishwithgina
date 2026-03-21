@@ -198,7 +198,7 @@ const NWG_TRANSLATIONS = {
     // Floating button
     const floating = document.getElementById('floatingLangInner');
     if (floating) {
-      floating.innerHTML = lang === 'en' ? '🇮🇩 Bahasa Indonesia' : '🇺🇸 English';
+      floating.innerHTML = lang === 'en' ? '🇮🇩 ID' : '🇺🇸 EN';
     }
     // Mobile nav button
     const mob = document.getElementById('mobileLangBtn');
