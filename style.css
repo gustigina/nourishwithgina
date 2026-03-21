@@ -1077,6 +1077,8 @@ a {
   height: 220px;
   object-fit: cover;
   transition: transform 0.5s var(--ease-smooth);
+  filter: brightness(1.05) contrast(1.08) saturate(1.15) sepia(0.12) warm(0);
+  filter: brightness(1.05) contrast(1.08) saturate(1.12) sepia(0.08);
 }
 
 .masonry-card:nth-child(1) .masonry-card-img { height: 280px; }
