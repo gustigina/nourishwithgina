@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipes — NourishWithGina</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav scrolled" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+  </div>
+
+
+  <!-- ============ HERO ============ -->
+  <section class="recipes-hero">
+    <div class="recipes-hero-content">
+      <h1 class="recipes-hero-title fade-in-left">Recipes</h1>
+      <p class="recipes-hero-sub fade-in-left" style="transition-delay:0.2s;">every dish tells a story</p>
+    </div>
+  </section>
+
+
+  <!-- ============ FILTER BAR ============ -->
+  <div class="filter-bar">
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="main">Main Dish</button>
+      <button class="filter-pill" data-filter="pasta">Pasta</button>
+      <button class="filter-pill" data-filter="salad">Salad</button>
+      <button class="filter-pill" data-filter="snack">Snack</button>
+      <button class="filter-pill" data-filter="breakfast">Breakfast</button>
+      <button class="filter-pill" data-filter="dessert">Dessert</button>
+    </div>
+  </div>
+
+
+  <!-- ============ MASONRY RECIPE GRID ============ -->
+  <section class="recipes-grid-section">
+    <div class="recipes-masonry" id="masonryGrid">
+
+      <!-- Card 1 — Korean Beef Bowl -->
+      <article class="masonry-card fade-in" data-category="main">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&q=80"
+          alt="Korean Beef Bowl"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Main Dish · 30 min</div>
+          <h2 class="masonry-card-title">Korean Beef Bowl</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 78%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 82%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-workout">💪 Post-workout</span>
+            <span class="masonry-tag tag-date">🌙 Date night</span>
+          </div>
+
+          <a href="recipe-template.html" style="display:inline-block;margin-top:1rem;font-family:var(--font-body);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--terracotta);border-bottom:1px solid var(--terracotta);padding-bottom:2px;">View Recipe →</a>
+        </div>
+      </article>
+
+      <!-- Card 2 — Pumpkin Pasta -->
+      <article class="masonry-card fade-in" data-category="pasta" style="transition-delay:0.1s;">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80"
+          alt="Creamy Pumpkin Pasta"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Pasta · 25 min</div>
+          <h2 class="masonry-card-title">Creamy Pumpkin Pasta</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 72%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 88%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-comfort">🤗 Comfort food</span>
+            <span class="masonry-tag tag-rainy">🌧 Rainy day</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 — Sesame Cucumber -->
+      <article class="masonry-card fade-in" data-category="salad" style="transition-delay:0.2s;">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80"
+          alt="Sesame Cucumber Salad"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Salad · 10 min</div>
+          <h2 class="masonry-card-title">Sesame Cucumber</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 60%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 95%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 70%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-snack">🥗 Light snack</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 — Miso Salmon (bonus) -->
+      <article class="masonry-card fade-in" data-category="main" style="transition-delay:0.3s;">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80"
+          alt="Miso Glazed Salmon"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Main Dish · 20 min</div>
+          <h2 class="masonry-card-title">Miso Glazed Salmon</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 88%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 92%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-date">🌙 Date night</span>
+            <span class="masonry-tag tag-workout">💪 Post-workout</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 — Avocado Toast (bonus) -->
+      <article class="masonry-card fade-in" data-category="breakfast" style="transition-delay:0.4s;">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1603046891744-1f6a09a65e51?w=600&q=80"
+          alt="Elevated Avocado Toast"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Breakfast · 10 min</div>
+          <h2 class="masonry-card-title">Elevated Avocado Toast</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 75%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 88%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-snack">🥗 Light snack</span>
+            <span class="masonry-tag tag-pms">🌸 PMS friendly</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6 — Dark Choc Mousse (bonus) -->
+      <article class="masonry-card fade-in" data-category="dessert" style="transition-delay:0.5s;">
+        <img
+          class="masonry-card-img"
+          src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?w=600&q=80"
+          alt="Dark Chocolate Mousse"
+          loading="lazy"
+        />
+        <div class="masonry-card-body">
+          <div class="masonry-card-category">Dessert · 15 min</div>
+          <h2 class="masonry-card-title">Dark Chocolate Mousse</h2>
+
+          <div class="masonry-bars">
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Taste guilty</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill taste" style="--fill-width: 95%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Clean factor</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill clean" style="--fill-width: 65%;"></div>
+              </div>
+            </div>
+            <div class="masonry-bar-row">
+              <span class="masonry-bar-label">Mood boost</span>
+              <div class="masonry-bar-track">
+                <div class="masonry-bar-fill mood" style="--fill-width: 95%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="masonry-tags">
+            <span class="masonry-tag tag-comfort">🤗 Comfort food</span>
+            <span class="masonry-tag tag-pms">🌸 PMS friendly</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- end masonry -->
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline">Tastes guilty. Isn't.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 NourishWithGina. All rights reserved.</span>
+      <span class="footer-sign">Tastes guilty. Isn't. 🌿</span>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // ——— Hamburger ———
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // ——— Filter pills ———
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.masonry-card');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filter = pill.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            card.style.transform = card.style.transform.includes('rotate') ? card.style.transform : 'translateY(10px)';
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+              card.style.opacity = '1';
+              card.style.transform = '';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => { card.style.display = 'none'; }, 400);
+          }
+        });
+      });
+    });
+
+    // ——— IntersectionObserver: fade-ins ———
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ——— Bar animation ———
+    const bars = document.querySelectorAll('.masonry-bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(bar => barObserver.observe(bar));
+  </script>
+
+</body>
+</html>

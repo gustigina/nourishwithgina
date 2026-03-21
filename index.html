@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NourishWithGina — Tastes guilty. Isn't.</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+  </div>
+
+
+  <!-- ============ SECTION 1 — HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-tagline">
+        <div class="hero-tastes" id="typewriterTarget">
+          <!-- Typewriter fills this -->
+        </div>
+        <div class="hero-guilty-line" id="guiltyLine" style="opacity:0;">
+          <span class="hero-guilty">guilty. </span><span class="hero-isnt">Isn't.</span>
+        </div>
+        <div class="hero-by" id="byLine" style="opacity:0;">by Gina</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 2 — INTRO ============ -->
+  <section class="intro">
+    <div class="fade-in-left">
+      <blockquote class="intro-quote">
+        "I cook because healing starts in the kitchen."
+      </blockquote>
+      <p class="intro-body">
+        Every recipe here is backed by science, driven by flavor, and made with the belief that food should love you back. No guilt. No restriction. Just real food that makes you feel alive.
+      </p>
+    </div>
+
+    <div class="intro-stats fade-in-right">
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Curated Recipes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Clean Ingredients</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">0</span>
+        <span class="stat-label">Guilt</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 3 — FEATURED RECIPES ============ -->
+  <section class="recipes-section">
+    <div class="section-header fade-in">
+      <h2 class="section-title">The Recipes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="recipe-grid">
+
+      <!-- Card 1 — Korean Beef Bowl (large, spans 2 rows) -->
+      <article class="recipe-card fade-in">
+        <img
+          class="recipe-card-img"
+          src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80"
+          alt="Korean Beef Bowl"
+          loading="lazy"
+        />
+        <div class="recipe-card-overlay"></div>
+        <div class="recipe-card-base">
+          <div class="recipe-card-sub">Main dish · 30 min</div>
+          <h3 class="recipe-card-title">Korean Beef Bowl</h3>
+        </div>
+        <div class="recipe-card-hover-content">
+          <div class="card-barometers">
+            <div class="card-bar-row">
+              <span class="card-bar-label">Taste guilty</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill taste" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Clean factor</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill clean" style="--fill-width: 78%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Mood boost</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill mood" style="--fill-width: 82%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">💪 Post-workout</span>
+            <span class="card-tag">🌙 Date night</span>
+          </div>
+          <a href="recipe-template.html" class="card-cta">View Recipe →</a>
+        </div>
+      </article>
+
+      <!-- Card 2 — Pumpkin Pasta -->
+      <article class="recipe-card fade-in" style="transition-delay: 0.15s;">
+        <img
+          class="recipe-card-img"
+          src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80"
+          alt="Pumpkin Pasta"
+          loading="lazy"
+        />
+        <div class="recipe-card-overlay"></div>
+        <div class="recipe-card-base">
+          <div class="recipe-card-sub">Pasta · 25 min</div>
+          <h3 class="recipe-card-title">Creamy Pumpkin Pasta</h3>
+        </div>
+        <div class="recipe-card-hover-content">
+          <div class="card-barometers">
+            <div class="card-bar-row">
+              <span class="card-bar-label">Taste guilty</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill taste" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Clean factor</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill clean" style="--fill-width: 72%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Mood boost</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill mood" style="--fill-width: 88%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">🤗 Comfort food</span>
+            <span class="card-tag">🌧 Rainy day</span>
+          </div>
+          <a href="recipes.html" class="card-cta">View Recipe →</a>
+        </div>
+      </article>
+
+      <!-- Card 3 — Sesame Cucumber -->
+      <article class="recipe-card fade-in" style="transition-delay: 0.3s;">
+        <img
+          class="recipe-card-img"
+          src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80"
+          alt="Sesame Cucumber Salad"
+          loading="lazy"
+        />
+        <div class="recipe-card-overlay"></div>
+        <div class="recipe-card-base">
+          <div class="recipe-card-sub">Salad · 10 min</div>
+          <h3 class="recipe-card-title">Sesame Cucumber</h3>
+        </div>
+        <div class="recipe-card-hover-content">
+          <div class="card-barometers">
+            <div class="card-bar-row">
+              <span class="card-bar-label">Taste guilty</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill taste" style="--fill-width: 60%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Clean factor</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill clean" style="--fill-width: 95%;"></div>
+              </div>
+            </div>
+            <div class="card-bar-row">
+              <span class="card-bar-label">Mood boost</span>
+              <div class="card-bar-track">
+                <div class="card-bar-fill mood" style="--fill-width: 70%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">🥗 Light snack</span>
+          </div>
+          <a href="recipes.html" class="card-cta">View Recipe →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 4 — QUOTE STRIP ============ -->
+  <section class="quote-strip">
+    <p class="quote-strip-text fade-in">
+      "Food should make you feel alive, not guilty."
+    </p>
+    <p class="quote-strip-attr">— NourishWithGina</p>
+  </section>
+
+
+  <!-- ============ SECTION 5 — PSYCHONUTRITION ============ -->
+  <section class="psycho-section">
+    <div class="psycho-content fade-in-left">
+      <div class="psycho-label">The science behind the plate</div>
+      <h2 class="psycho-heading">Food is medicine.</h2>
+      <p class="psycho-body">
+        <strong>Psychonutrition</strong> is the study of how food affects your mind. Every ingredient I choose — the leafy greens, the fermented foods, the good fats — is picked not just for flavor, but for what it does to your brain chemistry.
+        <br><br>
+        Serotonin, dopamine, cortisol — all of it is shaped by what you eat. When you nourish your body right, you nourish your whole self. That's what these recipes are about.
+      </p>
+    </div>
+    <div class="psycho-emoji-side fade-in-right">
+      <div class="psycho-emoji">🧠</div>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 6 — ABOUT ============ -->
+  <section class="about-section" id="about">
+    <div class="about-portrait-wrap fade-in-left">
+      <img
+        class="about-portrait"
+        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+        alt="Gusti Gina"
+        loading="lazy"
+      />
+      <div class="about-portrait-ring"></div>
+    </div>
+
+    <div class="about-content fade-in-right">
+      <div class="about-label">The Cook</div>
+      <h2 class="about-name">Gusti Gina</h2>
+      <p class="about-bio">
+        Actress. Writer. Content creator. And someone who learned that healing can start at the dinner table. I came to cooking not from culinary school, but from survival — and somewhere along the way, it became my most honest form of self-expression.
+      </p>
+      <div class="about-cta">Let's cook together</div>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline">Tastes guilty. Isn't.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 NourishWithGina. All rights reserved.</span>
+      <span class="footer-sign">Tastes guilty. Isn't. 🌿</span>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // ——— NAV scroll effect ———
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ——— Hamburger / mobile nav ———
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+    }
+
+    // ——— Parallax hero ———
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `scale(1.05) translateY(${scrolled * 0.3}px)`;
+    }, { passive: true });
+
+    // ——— Typewriter animation ———
+    const typewriterTarget = document.getElementById('typewriterTarget');
+    const guiltyLine = document.getElementById('guiltyLine');
+    const byLine = document.getElementById('byLine');
+    const phrase = 'Tastes';
+    let i = 0;
+
+    function typeWriter() {
+      if (i < phrase.length) {
+        typewriterTarget.innerHTML =
+          `<span style="font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(80px,12vw,140px);color:var(--cream);line-height:0.9;">${phrase.slice(0, i + 1)}</span><span class="typewriter-cursor" style="height:clamp(60px,9vw,110px);margin-left:4px;"> </span>`;
+        i++;
+        setTimeout(typeWriter, 110);
+      } else {
+        // Remove cursor
+        typewriterTarget.innerHTML = `<span style="font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(80px,12vw,140px);color:var(--cream);line-height:0.9;">${phrase}</span>`;
+        // Show guilty line
+        setTimeout(() => {
+          guiltyLine.style.transition = 'opacity 0.7s ease';
+          guiltyLine.style.opacity = '1';
+          // Show by line
+          setTimeout(() => {
+            byLine.style.transition = 'opacity 0.7s ease';
+            byLine.style.opacity = '1';
+          }, 500);
+        }, 300);
+      }
+    }
+
+    // Start typewriter after short delay
+    setTimeout(typeWriter, 600);
+
+    // ——— IntersectionObserver: fade-in sections ———
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeEls.forEach(el => sectionObserver.observe(el));
+  </script>
+
+</body>
+</html>
