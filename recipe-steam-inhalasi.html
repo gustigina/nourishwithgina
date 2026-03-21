@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steam Inhalasi Rempah — NourishWithGina</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra page-specific styles */
+    .recipe-content {
+      max-width: 100%;
+    }
+
+    .ingredient-group-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--terracotta);
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 400;
+    }
+
+    .recipe-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(44, 26, 14, 0.08);
+      margin: 2.5rem 0;
+    }
+
+    /* Sticky sidebar override for desktop */
+    @media (min-width: 901px) {
+      .recipe-sidebar {
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--terracotta-light) transparent;
+      }
+    }
+
+    /* Related recipes teaser */
+    .related-section {
+      background: var(--cream);
+      padding: 5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .related-card {
+      display: flex;
+      gap: 1rem;
+      background: var(--offwhite);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(44,26,14,0.07);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .related-card-img {
+      width: 120px;
+      height: 100%;
+      min-height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .related-card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .related-card-cat {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.3rem;
+    }
+
+    .related-card-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--darkbrown);
+    }
+
+    @media (max-width: 700px) {
+      .related-section { padding: 3rem 2rem; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="recipes.html" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a></li>
+      <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
+    <button onclick="window.__nwgToggleLang();closeMobileNav?closeMobileNav():null" id="mobileLangBtn" style="background:none;border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:8px 20px;color:inherit;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:0.5rem;letter-spacing:0.05em;">🇮🇩 ID</button>
+  </div>
+
+
+  <!-- ============ RECIPE HERO ============ -->
+  <section class="recipe-hero">
+    <img
+      class="recipe-hero-img"
+      src="photos/steam-inhalasi.jpg"
+      alt="Steam Inhalasi Rempah"
+    />
+    <div class="recipe-hero-overlay"></div>
+
+    <div class="recipe-hero-nav">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: var(--cream); opacity: 0.9;">Steam Inhalasi Rempah</span>
+      </nav>
+    </div>
+    </section>
+
+  <div class="recipe-hero-title-wrap">
+    <h1 class="recipe-hero-title">Steam Inhalasi Rempah</h1>
+  </div>
+
+  <!-- ============ QUICK STATS BAR ============ -->
+  <div class="stats-bar">
+    <div class="stat-pill">
+      <span class="stat-pill-icon">⏱</span>
+      <span class="stat-pill-text">20 min</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">👤</span>
+      <span class="stat-pill-text">1 session</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">🔥</span>
+      <span class="stat-pill-text">650 kcal</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">💪</span>
+      <span class="stat-pill-text">45g protein</span>
+    </div>
+  </div>
+
+
+  <!-- ============ RECIPE CONTENT ============ -->
+  <div class="recipe-content">
+
+    <!-- LEFT — Main content -->
+    <div class="recipe-main">
+
+      <!-- Ingredients -->
+      <section class="fade-in">
+        <h2 class="recipe-section-title" data-i18n="recipe_section_ingredients">Ingredients</h2>
+        <div id="recipe-ingredients-wrap"><div class="ingredient-group-title">What you need</div>
+        <ul class="ingredients-list">
+          <li>1 cup dry couscous</li>
+          <li>2 cups hot water (boiled)</li>
+          <li>Pinch of salt</li>
+          <li>Pinch of nutmeg</li>
+          <li>Pinch of smoked paprika</li>
+          <li>Pinch of turmeric</li>
+          <li>1 tsp olive oil (optional)</li>
+        </ul>
+        </div>
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Instructions -->
+      <section class="fade-in" style="transition-delay: 0.1s;">
+        <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
+
+        <ol id="recipe-steps-wrap" class="instructions-list">
+          <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Mix the marinade.</strong> Combine soy sauce, mirin, sesame oil, lime juice, grated garlic, grated red onion, smoked paprika, and chili powder in a bowl. Stir until combined.</p></li>
+          <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Slice the beef.</strong> Cut into 3–4cm pieces. Against the grain if possible.</p></li>
+          <li class="instruction-item"><span class="instruction-number">03</span><p class="instruction-text"><strong>Get your pan screaming hot.</strong> No oil. High heat. Wait until you can feel the heat rising from the pan surface.</p></li>
+          <li class="instruction-item"><span class="instruction-number">04</span><p class="instruction-text"><strong>Sear the beef.</strong> Add beef in small batches. Do not touch for 45 seconds — let the edges char. Flip, 30 more seconds.</p></li>
+          <li class="instruction-item"><span class="instruction-number">05</span><p class="instruction-text"><strong>Add the marinade.</strong> Pour the marinade over the beef, toss everything for 1–1.5 minutes until the sauce is glossy and coats every piece.</p></li>
+          <li class="instruction-item"><span class="instruction-number">06</span><p class="instruction-text"><strong>Remove immediately.</strong> Do not overcook. The residual heat continues to cook it after it leaves the pan.</p></li>
+        
+          <li class="instruction-item"><span class="instruction-number">07</span><p class="instruction-text"><strong>Build your bowl.</strong> Serve over couscous or rice. Add <a href="recipe-cherry-tomato.html" style="color:var(--terracotta);border-bottom:1px solid var(--terracotta);text-decoration:none;">Air Fryer Cherry Tomato</a>, <a href="recipe-mayak-eggs-soy.html" style="color:var(--terracotta);border-bottom:1px solid var(--terracotta);text-decoration:none;">Mayak Eggs</a>, and romaine lettuce for a full Korean Beef Bowl.</p></li>
+        </ol>
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Chef's note -->
+      <section class="fade-in" style="transition-delay: 0.2s;">
+        <div class="chefs-note">
+          <div class="chefs-note-label">🌿 Chef's Note from Gina</div>
+          <p class="chefs-note-text">
+            "Use tap water, not your drinking pot — the water gets contaminated with mucus vapor and bacteria. Keep a dedicated pot for steam only. Ginger alone already works, but adding garlic and cloves makes it significantly more powerful. Do this twice a day when sick."
+          </p>
+        </div>
+      </section>
+
+    </div><!-- end recipe-main -->
+
+
+    <!-- RIGHT — Sticky Sidebar -->
+    <aside class="recipe-sidebar">
+
+      <!-- The Verdict — Barometers -->
+      <div class="sidebar-card fade-in-right">
+        <h3 class="sidebar-card-title">The Verdict</h3>
+        <div class="barometer-list">
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_taste">Flavor</span>
+              <span class="barometer-score">8.8/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill taste" style="--fill-width: 65%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_clean">Clean Factor</span>
+              <span class="barometer-score">9.5/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill clean" style="--fill-width: 78%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_mood">Mood Boost</span>
+              <span class="barometer-score">8.2/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill mood" style="--fill-width: 82%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Energy Level</span>
+              <span class="barometer-score">9.0/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill energy" style="--fill-width: 90%;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nutrition -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.15s;">
+        <h3 class="sidebar-card-title">Nutrition</h3>
+        <div class="nutrition-big">
+          <div class="nutrition-kcal">0</div>
+          <div class="nutrition-kcal-label">calories per serving</div>
+          <div class="nutrition-macros">
+            <div class="macro-item">
+              <div class="macro-value">—</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_protein">Protein</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">—</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_carbs">Carbs</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">—</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_fat">Fat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Psychonutrition note -->
+      <div class="psycho-note fade-in-right" style="transition-delay: 0.25s;">
+        <div class="psycho-note-label">🧠 Brain Food Note</div>
+        <p class="psycho-note-text">
+          Garlic contains allicin — one of the most potent natural antimicrobials known. When heated in steam, it becomes airborne and reaches the upper respiratory tract directly. Ginger has gingerols that reduce inflammation in the sinus lining. Cinnamon and cloves carry eugenol — a natural antiseptic. This is not folklore. This is medicinal chemistry delivered via steam.
+        </p>
+      </div>
+
+      <!-- Best Eaten When -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.35s;">
+        <h3 class="sidebar-card-title">Best Eaten When</h3>
+        <div class="mood-tags">
+          <div class="mood-tag-item"><span class="mood-tag-icon">💪</span>Post-workout</div>
+<div class="mood-tag-item"><span class="mood-tag-icon">🌙</span>Date night</div>
+        </div>
+      </div>
+
+    </aside><!-- end sidebar -->
+
+  </div><!-- end recipe-content -->
+
+
+  <!-- ============ RELATED RECIPES ============ -->
+  <section class="related-section">
+    <div class="section-header fade-in">
+      <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 4rem);">More recipes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="related-grid">
+      <a href="recipe-jahe.html" class="related-card">
+        <img class="related-card-img" src="photos/steam-inhalasi.jpg" alt="Steam Inhalasi Rempah" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">🌿 Healing · 10 min</div>
+          <div class="related-card-title">Rebusan Jahe</div>
+        </div>
+      </a>
+      <a href="recipe-jahe.html" class="related-card">
+        <img class="related-card-img" src="photos/jahe-drink.jpg" alt="Rebusan Jahe" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">🌿 Healing · 10 min</div>
+          <div class="related-card-title">Rebusan Jahe</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline" data-i18n="footer_tagline">Flavor, but it isn't.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer_copy">Made with love & science by Gina</span>
+      <span class="footer-sign" data-i18n="footer_sign">Flavor, but it isn't. 🌿</span>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // ——— Nav scroll ———
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ——— Hamburger ———
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // ——— IntersectionObserver: fade-ins ———
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Fallback: show all after 2.5s
+    setTimeout(() => {
+      fadeEls.forEach(el => el.classList.add('visible'));
+      document.querySelectorAll('.barometer-fill').forEach(el => el.classList.add('visible'));
+    }, 2500);
+
+    // ——— Barometer animation ———
+    const fills = document.querySelectorAll('.barometer-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Stagger each fill slightly
+          const delay = Array.from(fills).indexOf(entry.target) * 120;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    fills.forEach(f => barObserver.observe(f));
+
+    // ——— Hero parallax ———
+    const heroImg = document.querySelector('.recipe-hero-img');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroImg.style.transform = `scale(1.05) translateY(${scrolled * 0.2}px)`;
+      }
+    }, { passive: true });
+  </script>
+
+
+  <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
+  <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.2rem;z-index:9999;background:rgba(44,26,14,0.88);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:8px 14px;cursor:pointer;font-family:sans-serif;font-size:0.7rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(0,0,0,0.3);backdrop-filter:blur(8px);letter-spacing:0.04em;white-space:nowrap;"><span id="floatingLangInner">🇮🇩 ID</span></div>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Steam Inhalasi Rempah",
+        hero_sub: "🌿 Healing remedy · 20 min",
+        crumb: "Steam Inhalasi Rempah",
+        ingredients: "<div class=\"ingredient-group-title\">What you need</div>\n        <ul class=\"ingredients-list\"><li>Fresh ginger — a few thin slices</li><li>2–3 garlic cloves, crushed</li><li>1 cinnamon stick</li><li>3–4 whole cloves</li><li>Tap water (not drinking water)</li></ul>\n        <div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">You will also need</div>\n        <ul class=\"ingredients-list\"><li>A large pot or bowl</li><li>A large towel</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Add everything to the pot.</strong> Add ginger slices, crushed garlic, cinnamon stick, and cloves to a large pot. Fill with tap water. Do not use your drinking water pot — keep these separate.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Boil for 10–15 minutes.</strong> Bring to a full boil, then reduce heat slightly. You want the steam to carry the spice aroma — the stronger the smell, the more effective.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Turn off the heat.</strong> Bring the pot to a table. Let it sit 30 seconds so the steam is hot but not scalding.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Create your steam tent.</strong> Sit with your face 20–30 cm above the pot. Drape a large towel over your head and the pot — make a tent. Close your eyes.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Inhale slowly for 10–15 minutes.</strong> Breathe in through your nose, out through your mouth. Go slow. If it gets too hot, lift the towel slightly.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>Blow your nose, then rest.</strong> Gently clear your sinuses after the session. Do not go directly into cold air or AC. Rest 15 minutes. Do this twice a day — morning and before bed.</p></li>",
+        chef_note: "Use tap water, not your drinking pot — the water gets contaminated with mucus vapor and bacteria. Keep a dedicated pot for steam only. Ginger alone already works, but adding garlic and cloves makes it significantly more powerful. Do this twice a day when sick.",
+        brain_note: "Garlic contains allicin — one of the most potent natural antimicrobials known. When heated in steam, it becomes airborne and reaches the upper respiratory tract directly. Ginger has gingerols that reduce inflammation in the sinus lining. Cinnamon and cloves carry eugenol — a natural antiseptic. This is not folklore. This is medicinal chemistry delivered via steam.",
+      },
+      id: {
+        title: "Steam Inhalasi Rempah",
+        hero_sub: "🌿 Ramuan penyembuh · 20 mnt",
+        crumb: "Steam Inhalasi Rempah",
+        ingredients: "<div class=\"ingredient-group-title\">Yang kamu butuhkan</div>\n        <ul class=\"ingredients-list\"><li>Jahe segar — beberapa lembar iris tipis</li><li>2–3 siung bawang putih, geprek</li><li>1 batang kayu manis</li><li>3–4 biji cengkeh</li><li>Air keran (bukan air minum)</li></ul>\n        <div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">Perlengkapan</div>\n        <ul class=\"ingredients-list\"><li>Panci atau mangkuk besar</li><li>Handuk besar</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Masukkan semua bahan ke panci.</strong> Masukkan irisan jahe, bawang putih geprek, kayu manis, dan cengkeh ke panci besar. Isi dengan air keran. Jangan pakai panci air minum — pisahkan.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Rebus 10–15 menit.</strong> Didihkan, lalu kecilkan api sedikit. Semakin kuat aromanya, semakin efektif uapnya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Matikan api.</strong> Bawa panci ke meja. Diamkan 30 detik agar uapnya panas tapi tidak menyengat.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Buat tenda uap.</strong> Duduk dengan wajah 20–30 cm di atas panci. Tutup kepala dan panci dengan handuk besar seperti tenda. Tutup mata.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Hirup pelan 10–15 menit.</strong> Tarik napas lewat hidung, buang lewat mulut. Pelan-pelan. Kalau terlalu panas, angkat sedikit handuknya.</p></li>\n          <li class=\"instruction-item\"><span class=\"instruction-number\">06</span><p class=\"instruction-text\"><strong>Tiup hidung, lalu istirahat.</strong> Setelah sesi selesai, keluarkan lendir pelan-pelan. Jangan langsung kena AC atau udara dingin. Istirahat 15 menit. Lakukan 2x sehari — pagi dan sebelum tidur.</p></li>",
+        chef_note: "Pakai air keran, bukan panci air minummu — airnya terkontaminasi uap lendir dan bakteri setelah steam. Simpan panci khusus untuk steam saja. Jahe saja sudah efektif, tapi tambahan bawang putih dan cengkeh bikin hasilnya jauh lebih kuat.",
+        brain_note: "Bawang putih mengandung allicin — salah satu antimikroba alami paling kuat yang diketahui. Saat dipanaskan dalam uap, allicin menjadi airborne dan langsung mencapai saluran pernapasan atas. Jahe mengandung gingerol yang mengurangi peradangan di lapisan sinus. Kayu manis dan cengkeh mengandung eugenol — antiseptik alami. Ini bukan mitos. Ini kimia medis yang disampaikan lewat uap.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.getElementById('recipe-ingredients-wrap');
+      var stepsEl = document.getElementById('recipe-steps-wrap');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+      var ingGroupTitle = ingEl ? ingEl.querySelector('.ingredient-group-title') : null;
+      var ingList = ingEl ? ingEl.querySelector('.ingredients-list') : null;
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      // Safely swap ingredients: only replace inner content, not the wrapper
+      if (ingEl) {
+        // Create a temp container to parse HTML safely
+        var tmp = document.createElement('div');
+        tmp.innerHTML = c.ingredients;
+        // Clear only the group titles and lists inside the wrap
+        Array.from(ingEl.querySelectorAll('.ingredient-group-title, .ingredients-list')).forEach(function(el) { el.remove(); });
+        // Insert new content from temp
+        Array.from(tmp.childNodes).forEach(function(node) { ingEl.appendChild(node.cloneNode(true)); });
+      }
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '\u201c' + c.chef_note + '\u201d';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply immediately when script runs (after DOM parsed, before DOMContentLoaded)
+    function initRecipeLang() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+    }
+
+    // Run on DOMContentLoaded (lang.js also fires then — order is cursor.js → recipe script → lang.js)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Small delay to ensure lang.js has run first
+      setTimeout(function() {
+        var lang = localStorage.getItem('nwg_lang') || 'en';
+        applyRecipeContent(lang);
+        // Also trigger data-i18n elements via lang.js if available
+        if (window.__nwgApplyLang) window.__nwgApplyLang(lang);
+      }, 50);
+    });
+
+    // Re-apply when lang toggle is clicked
+    document.addEventListener('nwg_lang_change', function(e) {
+      applyRecipeContent(e.detail);
+    });
+  })();
+  </script>
+  <script src="cursor.js"></script>
+  <script src="lang.js"></script>
+</body>
+</html>
