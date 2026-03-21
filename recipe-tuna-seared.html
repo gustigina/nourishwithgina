@@ -186,7 +186,7 @@
       <!-- Ingredients -->
       <section class="fade-in">
         <h2 class="recipe-section-title" data-i18n="recipe_section_ingredients">Ingredients</h2>
-        <div class="ingredient-group-title">The tuna</div>
+        <div id="recipe-ingredients-wrap"><div class="ingredient-group-title">The tuna</div>
         <ul class="ingredients-list">
           <li>180–200g frozen tuna (thawed)</li>
           <li>½ tsp smoked paprika</li>
@@ -204,7 +204,8 @@
       <section class="fade-in" style="transition-delay: 0.1s;">
         <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
 
-        <ol class="instructions-list">
+        </div>
+        <ol id="recipe-steps-wrap" class="instructions-list">
           <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Thaw properly.</strong> Place tuna (still in packaging or ziplock) in cold water for 20–30 minutes. Do not use warm water — it cooks the outer layer unevenly.</p></li>
           <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Pat completely dry.</strong> This is the most critical step. Use paper towel, press firmly, repeat. Dry = sear. Wet = steam. They are completely different results.</p></li>
           <li class="instruction-item"><span class="instruction-number">03</span><p class="instruction-text"><strong>Season.</strong> Coat with smoked paprika, salt, pepper, and a thin layer of olive oil. Rub it in with your hands.</p></li>
@@ -465,8 +466,8 @@
       var titleEl = document.querySelector('.recipe-hero-title');
       var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
       var crumbEl = document.querySelector('.breadcrumb span[style]');
-      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
-      var stepsEl = document.querySelector('.instructions-list');
+      var ingEl = document.getElementById('recipe-ingredients-wrap');
+      var stepsEl = document.getElementById('recipe-steps-wrap');
       var chefEl = document.querySelector('.chefs-note-text');
       var brainEl = document.querySelector('.psycho-note-text');
 
@@ -474,7 +475,7 @@
       if (crumbEl) crumbEl.textContent = c.crumb;
       if (ingEl) ingEl.innerHTML = c.ingredients;
       if (stepsEl) stepsEl.innerHTML = c.steps;
-      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (chefEl) chefEl.innerHTML = '\u201c' + c.chef_note + '\u201d';
       if (brainEl) brainEl.textContent = c.brain_note;
     }
 

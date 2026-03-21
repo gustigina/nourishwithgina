@@ -186,7 +186,7 @@
       <!-- Ingredients -->
       <section class="fade-in">
         <h2 class="recipe-section-title" data-i18n="recipe_section_ingredients">Ingredients</h2>
-        <div class="ingredient-group-title">The eggs</div>
+        <div id="recipe-ingredients-wrap"><div class="ingredient-group-title">The eggs</div>
         <ul class="ingredients-list">
           <li>10 eggs</li>
         </ul>
@@ -213,7 +213,8 @@
       <section class="fade-in" style="transition-delay: 0.1s;">
         <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
 
-        <ol class="instructions-list">
+        </div>
+        <ol id="recipe-steps-wrap" class="instructions-list">
           <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Boil the eggs.</strong> Bring water to a boil. Gently lower eggs in with a spoon. Timer: exactly 7 minutes.</p></li>
           <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Ice bath.</strong> Remove eggs immediately to a bowl of ice water + cold water. Rest 5 minutes. This stops cooking and makes peeling easy.</p></li>
           <li class="instruction-item"><span class="instruction-number">03</span><p class="instruction-text"><strong>Peel under water.</strong> Peel each egg while submerged. The water gets under the membrane and the shell comes off cleanly.</p></li>
@@ -472,8 +473,8 @@
       var titleEl = document.querySelector('.recipe-hero-title');
       var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
       var crumbEl = document.querySelector('.breadcrumb span[style]');
-      var ingEl = document.querySelector('.ingredients-list')?.parentElement;
-      var stepsEl = document.querySelector('.instructions-list');
+      var ingEl = document.getElementById('recipe-ingredients-wrap');
+      var stepsEl = document.getElementById('recipe-steps-wrap');
       var chefEl = document.querySelector('.chefs-note-text');
       var brainEl = document.querySelector('.psycho-note-text');
 
@@ -481,7 +482,7 @@
       if (crumbEl) crumbEl.textContent = c.crumb;
       if (ingEl) ingEl.innerHTML = c.ingredients;
       if (stepsEl) stepsEl.innerHTML = c.steps;
-      if (chefEl) chefEl.innerHTML = '"' + c.chef_note + '"';
+      if (chefEl) chefEl.innerHTML = '\u201c' + c.chef_note + '\u201d';
       if (brainEl) brainEl.textContent = c.brain_note;
     }
 
