@@ -1190,19 +1190,16 @@ a {
    ============================================ */
 .recipe-hero {
   width: 100%;
-  min-height: 55vh;
   position: relative;
   background: #1a0e07;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   overflow: hidden;
 }
 
 .recipe-hero-img {
   width: 100%;
   height: auto;
-  max-height: 80vh;
+  max-height: 85vh;
   object-fit: contain;
   display: block;
 }
