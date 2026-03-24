@@ -68,7 +68,7 @@
 
     <div class="intro-stats fade-in-right">
       <div class="stat-item">
-        <span class="stat-number">12</span>
+        <span class="stat-number" id="recipeCountStat">12</span>
         <span class="stat-label" data-i18n="stat_recipes">Curated Recipes</span>
       </div>
       <div class="stat-item">
@@ -394,6 +394,16 @@
   <script src="cursor.js"></script>
   <script src="lang.js"></script>
   <script src="homepage-featured.js"></script>
+  <script>
+  // Auto-update recipe count from NWG_RECIPES array
+  document.addEventListener('DOMContentLoaded', function() {
+    var el = document.getElementById('recipeCountStat');
+    if (el && window.NWG_RECIPES) {
+      el.textContent = window.NWG_RECIPES.length;
+    }
+  });
+  </script>
+
 
 </body>
 </html>
