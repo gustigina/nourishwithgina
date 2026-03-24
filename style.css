@@ -1735,7 +1735,7 @@ a {
 
 @media (max-width: 720px) {
   .recipes-masonry { columns: 2; }
-  .home-masonry { columns: 2; }
+  .home-masonry, .recipes-masonry.home-masonry { columns: 1 !important; }
   .intro { padding: 4rem 1.5rem; }
   .recipes-section { padding: 3rem 1.5rem; }
   .email-form { max-width: 100%; }
@@ -1748,6 +1748,7 @@ a {
   .recipe-card { transform: none !important; }
   .hero-guilty-line { font-size: 45px; }
   .recipes-masonry { columns: 1; }
+  .home-masonry { columns: 1; }
   .stat-pill { padding: 0.5rem 0.9rem; }
 }
 
@@ -1811,7 +1812,7 @@ a {
 
 @media (max-width: 720px) {
   .recipes-masonry { columns: 2; }
-  .home-masonry { columns: 2; }
+  .home-masonry, .recipes-masonry.home-masonry { columns: 1 !important; }
   .intro { padding: 4rem 1.5rem; }
   .recipes-section { padding: 3rem 1.5rem; }
   .email-form { max-width: 100%; }
@@ -1895,7 +1896,7 @@ a {
 
 @media (max-width: 720px) {
   .recipes-masonry { columns: 2; }
-  .home-masonry { columns: 2; }
+  .home-masonry, .recipes-masonry.home-masonry { columns: 1 !important; }
   .intro { padding: 4rem 1.5rem; }
   .recipes-section { padding: 3rem 1.5rem; }
   .email-form { max-width: 100%; }
