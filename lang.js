@@ -1,4 +1,4 @@
-// NourishWithGina — Language Toggle (i18n)
+// NourishWithGina, Language Toggle (i18n)
 // Opsi A: flag toggle in navbar, localStorage persists choice
 
 const NWG_TRANSLATIONS = {
@@ -32,11 +32,11 @@ const NWG_TRANSLATIONS = {
     // Psychonutrition
     psycho_label: "The science behind the plate",
     psycho_heading: "Food is medicine.",
-    psycho_body: "<strong>Psychonutrition</strong> is the study of how food affects your mind. Every ingredient I choose — the leafy greens, the fermented foods, the good fats — is picked not just for flavor, but for what it does to your brain chemistry.<br><br>Serotonin, dopamine, cortisol — all of it is shaped by what you eat. When you nourish your body right, you nourish your whole self. That's what these recipes are about.",
+    psycho_body: "<strong>Psychonutrition</strong> is the study of how food affects your mind. Every ingredient I choose, the leafy greens, the fermented foods, the good fats, is picked not just for flavor, but for what it does to your brain chemistry.<br><br>Serotonin, dopamine, cortisol, all of it is shaped by what you eat. When you nourish your body right, you nourish your whole self. That's what these recipes are about.",
     // About
     about_label: "About",
     about_heading: "Hi, I'm Gina.",
-    about_body: "I'm a writer, actress, and content creator from Indonesia. I cook because it centers me — and because I believe that what you put in your body is one of the most powerful decisions you make every day.<br><br>These recipes are real. No performance, no perfection. Just the things I actually cook, eat, and feel good about.",
+    about_body: "I'm a writer, actress, and content creator from Indonesia. I cook because it centers me, and because I believe that what you put in your body is one of the most powerful decisions you make every day.<br><br>These recipes are real. No performance, no perfection. Just the things I actually cook, eat, and feel good about.",
     about_cta: "See All Recipes →",
     // Footer
     footer_tagline: "Tastes guilty. Isn't.",
@@ -106,11 +106,11 @@ const NWG_TRANSLATIONS = {
     // Psychonutrition
     psycho_label: "Sains di balik piring",
     psycho_heading: "Makanan adalah obat.",
-    psycho_body: "<strong>Psikogizi</strong> adalah ilmu yang mempelajari bagaimana makanan memengaruhi pikiran kita. Setiap bahan yang aku pilih — sayuran hijau, makanan fermentasi, lemak baik — dipilih bukan hanya untuk rasa, tapi untuk apa yang dilakukannya pada kimia otakmu.<br><br>Serotonin, dopamin, kortisol — semua dibentuk oleh apa yang kamu makan. Ketika kamu merawat tubuhmu dengan benar, kamu merawat seluruh dirimu. Itulah inti dari resep-resep ini.",
+    psycho_body: "<strong>Psikogizi</strong> adalah ilmu yang mempelajari bagaimana makanan memengaruhi pikiran kita. Setiap bahan yang aku pilih, sayuran hijau, makanan fermentasi, lemak baik, dipilih bukan hanya untuk rasa, tapi untuk apa yang dilakukannya pada kimia otakmu.<br><br>Serotonin, dopamin, kortisol, semua dibentuk oleh apa yang kamu makan. Ketika kamu merawat tubuhmu dengan benar, kamu merawat seluruh dirimu. Itulah inti dari resep-resep ini.",
     // About
     about_label: "Tentang",
     about_heading: "Hai, aku Gina.",
-    about_body: "Aku seorang penulis, aktris, dan content creator dari Indonesia. Aku memasak karena itu membuatku tenang — dan karena aku percaya bahwa apa yang kamu masukkan ke dalam tubuhmu adalah salah satu keputusan paling powerful yang kamu buat setiap hari.<br><br>Resep-resep ini nyata. Tanpa pencitraan, tanpa kesempurnaan. Hanya hal-hal yang benar-benar aku masak, makan, dan membuat aku merasa baik.",
+    about_body: "Aku seorang penulis, aktris, dan content creator dari Indonesia. Aku memasak karena itu membuatku tenang, dan karena aku percaya bahwa apa yang kamu masukkan ke dalam tubuhmu adalah salah satu keputusan paling powerful yang kamu buat setiap hari.<br><br>Resep-resep ini nyata. Tanpa pencitraan, tanpa kesempurnaan. Hanya hal-hal yang benar-benar aku masak, makan, dan membuat aku merasa baik.",
     about_cta: "Lihat Semua Resep →",
     // Footer
     footer_tagline: "Tastes guilty. Isn't.",
