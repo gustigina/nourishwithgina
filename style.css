@@ -2032,3 +2032,70 @@ a {
   .spotify-section { padding: 3.5rem 1.5rem; }
   #spotifyEmbed { height: 280px; }
 }
+
+/* ══════════════════════════════════════════════
+   PRINT STYLES — clean recipe card
+   ══════════════════════════════════════════════ */
+@media print {
+  /* Hide everything except recipe content */
+  .nav, .nav-mobile, .recipe-hero-nav, .next-recipe,
+  .footer, #floatingLang, #ambientSoundBtn,
+  #cookTimerWrap, .card-cta, .stats-bar .stat-pill:last-child,
+  .nwg-interactions, button, .floating-lang { display: none !important; }
+
+  body { background: #fff !important; color: #1a0a00 !important; font-size: 11pt; }
+
+  .recipe-content { display: block !important; padding: 0 !important; }
+  .recipe-main { padding: 0 !important; border: none !important; }
+  .recipe-sidebar { padding: 0 !important; position: static !important; margin-top: 1.5rem; }
+
+  /* Print header */
+  .recipe-hero { display: none !important; }
+  .recipe-hero-title-wrap {
+    position: static !important;
+    background: none !important;
+    padding: 0 0 1rem !important;
+    border-bottom: 2px solid #2c1a0e;
+    margin-bottom: 1.5rem;
+  }
+  .recipe-hero-title { color: #2c1a0e !important; font-size: 24pt !important; }
+  .recipe-hero-sub { color: #666 !important; }
+
+  /* Stats compact */
+  .stats-bar {
+    display: flex !important;
+    gap: 1rem !important;
+    padding: 0.5rem 0 1rem !important;
+    background: none !important;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+  }
+  .stat-pill { background: none !important; border: 1px solid #ccc !important; padding: 0.3rem 0.6rem !important; }
+  .stat-pill-text { color: #333 !important; font-size: 9pt !important; }
+
+  /* Ingredients */
+  .ingredients-list li { margin-bottom: 0.3rem !important; }
+  .ingredient-group-title { font-size: 10pt !important; color: #b85c38 !important; margin-top: 0.75rem !important; }
+
+  /* Steps */
+  .instruction-item { margin-bottom: 0.75rem !important; }
+  .instruction-number { background: #2c1a0e !important; color: #fff !important; -webkit-print-color-adjust: exact; }
+
+  /* Print footer */
+  .recipe-main::after {
+    content: "NourishWithGina.com — Tastes guilty. Isn\'t.";
+    display: block;
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #ddd;
+    font-size: 8pt;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* Ticked items print as crossed out */
+  li[data-ticked="1"] { text-decoration: line-through; opacity: 0.5; }
+
+  a { color: inherit !important; text-decoration: none !important; }
+  * { box-shadow: none !important; }
+}

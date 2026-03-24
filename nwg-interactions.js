@@ -242,6 +242,24 @@ function initAmbientSound() {
   });
 }
 
+
+// ══════════════════════════════════════════════
+// FEATURE 7: Print recipe button
+// ══════════════════════════════════════════════
+function initPrintButton() {
+  var statsBar = document.querySelector('.stats-bar');
+  if (!statsBar) return;
+
+  var printBtn = document.createElement('button');
+  printBtn.innerHTML = '🖨 <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Print / Save PDF</span>';
+  printBtn.style.cssText = 'background:none;border:1px solid rgba(44,26,14,0.2);border-radius:2rem;padding:0.5rem 1.1rem;cursor:pointer;font-family:var(--font-sans);color:var(--darkbrown,#2c1a0e);display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;transition:all 0.2s;font-size:0.8rem;';
+  printBtn.onmouseover = function() { this.style.background='var(--terracotta)'; this.style.color='#fff'; this.style.borderColor='var(--terracotta)'; };
+  printBtn.onmouseout = function() { this.style.background='none'; this.style.color='var(--darkbrown,#2c1a0e)'; this.style.borderColor='rgba(44,26,14,0.2)'; };
+  printBtn.addEventListener('click', function() { window.print(); });
+
+  statsBar.appendChild(printBtn);
+}
+
 // ══════════════════════════════════════════════
 // FEATURE 2: Mood selector (recipes.html + homepage)
 // ══════════════════════════════════════════════
@@ -430,10 +448,13 @@ function initCardFlip() {
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCinematicScroll();
+  initPrintButton();
   initAmbientSound();
   initMoodSelector();
   initSearch();
-    initAmbientSound();
+    initPrintButton();
+    initPrintButton();
+  initAmbientSound();
     initMoodSelector();
     initSearch();
     initCardFlip();
@@ -442,6 +463,7 @@ if (document.readyState === 'loading') {
   });
 } else {
   initCinematicScroll();
+  initPrintButton();
   initAmbientSound();
   initMoodSelector();
   initSearch();
