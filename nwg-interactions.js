@@ -159,6 +159,196 @@ function initCookTimer() {
 
 
 
+
+// ══════════════════════════════════════════════
+// FEATURE 1: Ambient kitchen sound (Web Audio API — no files needed)
+// Generates: soft rain + gentle white noise + subtle hum
+// ══════════════════════════════════════════════
+function initAmbientSound() {
+  var btn = document.getElementById('ambientSoundBtn');
+  if (!btn) return;
+
+  var ctx = null;
+  var nodes = [];
+  var playing = false;
+
+  function createRain(audioCtx) {
+    // White noise buffer
+    var bufferSize = audioCtx.sampleRate * 3;
+    var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    var data = buffer.getChannelData(0);
+    for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+    var source = audioCtx.createBufferSource();
+    source.buffer = buffer;
+    source.loop = true;
+
+    // Bandpass filter (rain frequency range)
+    var filter = audioCtx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 2500;
+    filter.Q.value = 0.8;
+
+    // Low shelf for warmth
+    var shelf = audioCtx.createBiquadFilter();
+    shelf.type = 'lowshelf';
+    shelf.frequency.value = 300;
+    shelf.gain.value = -8;
+
+    var gain = audioCtx.createGain();
+    gain.gain.value = 0.18;
+
+    source.connect(filter);
+    filter.connect(shelf);
+    shelf.connect(gain);
+    gain.connect(audioCtx.destination);
+    source.start();
+    return [source, filter, shelf, gain];
+  }
+
+  function createKitchenHum(audioCtx) {
+    // Gentle low hum (refrigerator/stove ambience)
+    var osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = 52;
+    var gain = audioCtx.createGain();
+    gain.gain.value = 0.04;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    return [osc, gain];
+  }
+
+  function startAmbient() {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    nodes = nodes.concat(createRain(ctx));
+    nodes = nodes.concat(createKitchenHum(ctx));
+    playing = true;
+    btn.innerHTML = '🔊 <span style="font-size:0.75rem;">Kitchen sounds on</span>';
+    btn.style.background = 'rgba(255,255,255,0.15)';
+  }
+
+  function stopAmbient() {
+    nodes.forEach(function(n) { try { n.stop ? n.stop() : n.disconnect(); } catch(e) {} });
+    nodes = [];
+    if (ctx) { try { ctx.close(); } catch(e) {} ctx = null; }
+    playing = false;
+    btn.innerHTML = '🍃 <span style="font-size:0.75rem;">Kitchen sounds</span>';
+    btn.style.background = 'rgba(255,255,255,0.06)';
+  }
+
+  btn.addEventListener('click', function() {
+    if (playing) stopAmbient(); else startAmbient();
+  });
+}
+
+// ══════════════════════════════════════════════
+// FEATURE 2: Mood selector (recipes.html + homepage)
+// ══════════════════════════════════════════════
+function initMoodSelector() {
+  var wrap = document.getElementById('moodSelectorWrap');
+  if (!wrap) return;
+
+  var MOODS = [
+    { id: 'healing',   emoji: '🤒', label: "I'm sick",     tags: ['healing'] },
+    { id: 'tired',     emoji: '😴', label: "I'm tired",    tags: ['main', 'healing'] },
+    { id: 'indulgent', emoji: '🤤', label: "Treat me",     tags: ['main'] },
+    { id: 'quick',     emoji: '⚡', label: "Quick only",   maxMin: 15 },
+    { id: 'veg',       emoji: '🌱', label: "Plant-based",  keywords: ['tempe', 'zucchini', 'cucumber', 'tomato'] },
+    { id: 'all',       emoji: '✨', label: "Show all",     reset: true },
+  ];
+
+  var html = '<div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.5;margin-bottom:0.75rem;font-weight:600;">How are you feeling?</div>';
+  html += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">';
+  MOODS.forEach(function(m) {
+    html += '<button class="mood-btn" data-mood="' + m.id + '" style="' +
+      'background:rgba(255,255,255,0.06);border:1px solid rgba(245,235,220,0.2);' +
+      'border-radius:2rem;padding:0.45rem 0.9rem;cursor:pointer;font-size:0.8rem;' +
+      'color:var(--cream);font-family:var(--font-sans);transition:all 0.2s;white-space:nowrap;">' +
+      m.emoji + ' ' + m.label + '</button>';
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+
+  // Apply mood filter to masonry cards
+  wrap.querySelectorAll('.mood-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      wrap.querySelectorAll('.mood-btn').forEach(function(b) {
+        b.style.background = 'rgba(255,255,255,0.06)';
+        b.style.borderColor = 'rgba(245,235,220,0.2)';
+        b.style.color = 'var(--cream)';
+      });
+      btn.style.background = 'var(--terracotta)';
+      btn.style.borderColor = 'var(--terracotta)';
+      btn.style.color = '#fff';
+
+      var moodId = btn.getAttribute('data-mood');
+      var mood = MOODS.find(function(m) { return m.id === moodId; });
+      var cards = document.querySelectorAll('.masonry-card');
+
+      cards.forEach(function(card) {
+        var wrapper = card.closest('a') || card;
+        if (!mood || mood.reset) {
+          wrapper.style.display = '';
+          return;
+        }
+        var title = (card.querySelector('.masonry-card-title') || {}).textContent || '';
+        var cat = (card.querySelector('.masonry-card-category') || {}).textContent || '';
+        var combined = (title + ' ' + cat).toLowerCase();
+        var show = false;
+
+        if (mood.tags) {
+          show = mood.tags.some(function(t) { return combined.includes(t); });
+        }
+        if (mood.keywords) {
+          show = mood.keywords.some(function(k) { return combined.includes(k); });
+        }
+        if (mood.maxMin) {
+          var minMatch = combined.match(/(\d+)\s*min/);
+          if (minMatch && parseInt(minMatch[1]) <= mood.maxMin) show = true;
+        }
+        wrapper.style.display = show ? '' : 'none';
+      });
+    });
+  });
+}
+
+// ══════════════════════════════════════════════
+// FEATURE 8: Search bar
+// ══════════════════════════════════════════════
+function initSearch() {
+  var input = document.getElementById('recipeSearchInput');
+  if (!input) return;
+
+  input.addEventListener('input', function() {
+    var q = input.value.toLowerCase().trim();
+    var cards = document.querySelectorAll('.masonry-card');
+    var anyVisible = false;
+
+    cards.forEach(function(card) {
+      var wrapper = card.closest('a') || card;
+      var title = (card.querySelector('.masonry-card-title, .recipe-card-title') || {}).textContent || '';
+      var cat = (card.querySelector('.masonry-card-category, .masonry-card-category') || {}).textContent || '';
+      var desc = (card.querySelector('.masonry-card-desc') || {}).textContent || '';
+      var combined = (title + ' ' + cat + ' ' + desc).toLowerCase();
+      var show = !q || combined.includes(q);
+      wrapper.style.display = show ? '' : 'none';
+      if (show) anyVisible = true;
+    });
+
+    var empty = document.getElementById('searchEmpty');
+    if (empty) empty.style.display = anyVisible || !q ? 'none' : 'block';
+  });
+
+  // Clear on ESC
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      input.value = '';
+      input.dispatchEvent(new Event('input'));
+    }
+  });
+}
+
 // ── Cinematic scroll reveal: word-by-word for section titles ──
 function initCinematicScroll() {
   // Select hero tagline words (already has typewriter, skip)
@@ -240,12 +430,21 @@ function initCardFlip() {
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCinematicScroll();
+  initAmbientSound();
+  initMoodSelector();
+  initSearch();
+    initAmbientSound();
+    initMoodSelector();
+    initSearch();
     initCardFlip();
     initTickOff();
     initCookTimer();
   });
 } else {
   initCinematicScroll();
+  initAmbientSound();
+  initMoodSelector();
+  initSearch();
   initCardFlip();
   initTickOff();
   initCookTimer();
