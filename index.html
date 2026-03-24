@@ -267,6 +267,28 @@
   </section>
 
 
+
+  <!-- ============ SECTION 7 — EMAIL CAPTURE ============ -->
+  <section class="email-section">
+    <div class="email-inner fade-in">
+      <div class="email-icon">🌿</div>
+      <h2 class="email-title" data-i18n="email_title">New recipes, every week.</h2>
+      <p class="email-sub" data-i18n="email_sub">No spam. Just real food that heals — straight to your inbox.</p>
+      <form class="email-form" id="emailForm" onsubmit="handleEmailSubmit(event)">
+        <input
+          type="email"
+          class="email-input"
+          id="emailInput"
+          placeholder="your@email.com"
+          required
+          data-i18n-placeholder="email_placeholder"
+        />
+        <button type="submit" class="email-btn" data-i18n="email_btn">Subscribe</button>
+      </form>
+      <p class="email-note" data-i18n="email_note" id="emailNote" style="display:none;">✓ You're in! First recipe coming soon 🌸</p>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="footer-top">
