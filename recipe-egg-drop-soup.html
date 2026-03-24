@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Egg Drop Soup — NourishWithGina</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav scrolled" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+  </div>
+
+  <section class="recipe-hero" style="background-image: url('photos/egg-drop-soup.jpg');">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-hero-category">Healing · 15 min</div>
+      <h1 class="recipe-hero-title">Egg Drop Soup<br/><em>Healing Version</em></h1>
+      <p class="recipe-hero-sub">Silky egg ribbons. Warm ginger broth. Pure comfort.</p>
+    </div>
+  </section>
+
+  <div class="recipe-body">
+    <div class="recipe-main">
+      <div class="recipe-story">
+        <p>Ada sup yang cocok untuk semua suasana — tapi Egg Drop Soup paling cocok saat tubuh sedang butuh kehangatan. Kaldu jahe yang soothing, egg ribbon yang silky dan lembut, sedikit sesame oil untuk aroma yang comforting.</p>
+        <p>15 menit dari kompor ke meja. Dan rasanya seperti pelukan dalam mangkok. <em>"Pas banget rasanya hangat, apalagi lagi sakit."</em> — Gina, 24 Maret 2026 🌸</p>
+      </div>
+
+      <div class="recipe-stats">
+        <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">minutes</div></div>
+        <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">servings</div></div>
+        <div class="stat-item"><div class="stat-value">120</div><div class="stat-label">kcal</div></div>
+        <div class="stat-item"><div class="stat-value">10g</div><div class="stat-label">protein</div></div>
+      </div>
+
+      <h2 class="recipe-section-title">Bahan</h2>
+      <ul class="ingredient-list">
+        <li><span class="ingredient-amount">1.2 liter</span> Air</li>
+        <li><span class="ingredient-amount">2 sdt</span> Kaldu ayam / kaldu bubuk</li>
+        <li><span class="ingredient-amount">4–5 iris</span> Jahe segar, iris tipis</li>
+        <li><span class="ingredient-amount">3–4 siung</span> Bawang putih, geprek</li>
+        <li><span class="ingredient-amount">¾–1 sdt</span> Garam</li>
+        <li><span class="ingredient-amount">½ sdt</span> Lada putih</li>
+        <li><span class="ingredient-amount">2 sdm</span> Maizena + 4 sdm air dingin <em>(aduk rata dulu)</em></li>
+        <li><span class="ingredient-amount">6 butir</span> Telur, kocok lepas rata</li>
+        <li><span class="ingredient-amount">1 sdt</span> Sesame oil</li>
+        <li><span class="ingredient-amount">secukupnya</span> Daun bawang, iris tipis</li>
+      </ul>
+
+      <div style="background:#fff8f0;border-left:4px solid var(--terracotta);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:4px;font-family:var(--font-body);font-size:0.85rem;line-height:1.8;">
+        <strong>💡 Healing Boosters (opsional):</strong><br/>
+        + Madu 1 sdt ke dalam mangkok → antiviral + soothing<br/>
+        + Tofu silken potong dadu → protein extra, lembut di tenggorokan<br/>
+        + Jamur shiitake iris → imunomodulator alami
+      </div>
+
+      <h2 class="recipe-section-title">Cara</h2>
+      <ol class="instruction-list">
+        <li>
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <strong>Rebus kaldu rempah</strong><br/>
+            Masukkan air + kaldu + jahe + bawang putih ke panci. Didihkan. Kecilkan api, biarkan rempah meresap 3–4 menit. Angkat jahe dan bawang putih kalau tidak mau texture-nya di sup.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <strong>Thicken — maizena</strong><br/>
+            Kecilkan api ke sedang. Aduk larutan maizena (maizena + air dingin) sampai rata, lalu tuang ke kaldu sambil diaduk terus. Kuah akan mengental dan jadi silky dalam 30 detik.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <strong>Kecilkan api ke paling kecil</strong><br/>
+            Ini kunci step berikutnya. Api harus benar-benar kecil sebelum telur masuk.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <strong>Egg ribbons — teknik dua tahap</strong><br/>
+            Kocok telur lepas rata. Tuang <strong>½ bagian</strong> pelan-pelan dari ketinggian ~30cm sambil tangan lain mengaduk kuah dengan gerakan melingkar lambat. Tunggu 15 detik. Tuang <strong>½ sisanya</strong> dengan cara yang sama. Ribbon akan terbentuk cantik dan silky! ✨
+          </div>
+        </li>
+        <li>
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <strong>Finishing & serve</strong><br/>
+            Matikan api. Tambah sesame oil + lada putih. Tabur daun bawang iris. Tuang ke mangkok dan minum hangat-hangat! 🍵
+          </div>
+        </li>
+      </ol>
+
+      <div style="background:#f0f7f0;border-left:4px solid #4a7c59;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:4px;font-family:var(--font-body);font-size:0.85rem;line-height:1.8;">
+        <strong>🔑 Kunci Ribbon Cantik:</strong><br/>
+        1. Api paling kecil saat telur masuk<br/>
+        2. Tuang dari ketinggian ~30cm sambil aduk melingkar lambat<br/>
+        3. Bagi 2x tuang untuk volume besar — tidak menggumpal
+      </div>
+
+      <div class="recipe-gina-note">
+        <div class="recipe-gina-note-label">Gina's Note 🌸</div>
+        <p>"Aku buat ini pas lagi flu dan rasanya beneran healing banget. Hangat, silky, tidak berat di perut. Ribbon telurnya berhasil cantik — kuncinya beneran di api kecil dan tuang pelan-pelan. Minum hangat-hangat langsung dari panci? 10/10! 🥚"</p>
+      </div>
+    </div>
+
+    <aside class="recipe-sidebar">
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">The Verdict</h3>
+        <div class="barometer-item"><div class="barometer-label"><span>Taste Guilty</span><span class="barometer-score">4/5</span></div><div class="barometer-track"><div class="barometer-fill taste-fill" style="--target-width: 78%;"></div></div></div>
+        <div class="barometer-item"><div class="barometer-label"><span>Clean Factor</span><span class="barometer-score">5/5</span></div><div class="barometer-track"><div class="barometer-fill clean-fill" style="--target-width: 95%;"></div></div></div>
+        <div class="barometer-item"><div class="barometer-label"><span>Mood Boost</span><span class="barometer-score">5/5</span></div><div class="barometer-track"><div class="barometer-fill mood-fill" style="--target-width: 98%;"></div></div></div>
+        <div class="barometer-item"><div class="barometer-label"><span>Energy</span><span class="barometer-score">3/5</span></div><div class="barometer-track"><div class="barometer-fill energy-fill" style="--target-width: 60%;"></div></div></div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">Nutrition / Serving</h3>
+        <table class="nutrition-table">
+          <tr><td>Kalori</td><td><strong>~120 kcal</strong></td></tr>
+          <tr><td>Protein</td><td><strong>10g</strong></td></tr>
+          <tr><td>Fat</td><td><strong>7g</strong></td></tr>
+          <tr><td>Carbs</td><td><strong>4g</strong></td></tr>
+          <tr><td>Sodium</td><td><strong>moderate</strong></td></tr>
+        </table>
+      </div>
+
+      <div class="sidebar-card sidebar-psycho">
+        <h3 class="sidebar-card-title">Psychonutrition Note 🧠</h3>
+        <p><strong>Jahe</strong> mengandung gingerol — senyawa anti-inflamasi dan antiviral yang membantu melawan infeksi. Hangat jahe juga menstimulasi sirkulasi darah dan membuka saluran pernapasan.</p>
+        <p><strong>Bawang putih</strong> kaya allicin — antioksidan kuat yang terbukti secara klinis mengurangi durasi flu. Paling aktif saat dipanaskan perlahan.</p>
+        <p><strong>Telur</strong> menyediakan protein lengkap + zinc — mineral yang esensial untuk fungsi imun dan pemulihan sel. Sup hangat juga meningkatkan produksi mucus yang membantu menangkap patogen.</p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">Best Eaten When 💡</h3>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--font-body);font-size:0.85rem;line-height:2;">
+          <li>🤧 Flu, pilek, sakit tenggorokan</li>
+          <li>🌙 Malam hari — soothing sebelum tidur</li>
+          <li>⚡ Butuh protein ringan</li>
+          <li>🌧️ Hari hujan yang dingin</li>
+          <li>🫶 Comfort food yang clean</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">Pair With</h3>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--font-body);font-size:0.85rem;line-height:2;">
+          <li>🍵 Rebusan Jahe + Madu + Lemon</li>
+          <li>🍜 Sop Ayam</li>
+          <li>🌫️ Steam Inhalasi Rempah</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <section class="next-recipes">
+    <h2 class="next-recipes-title">You Might Also Like</h2>
+    <div class="next-recipes-grid">
+      <a href="recipe-sop-ayam.html" class="next-recipe-card">
+        <img src="photos/sop-ayam.jpg" alt="Sop Ayam" />
+        <div class="next-recipe-info"><div class="next-recipe-cat">Healing</div><div class="next-recipe-name">Sop Ayam</div></div>
+      </a>
+      <a href="recipe-jahe.html" class="next-recipe-card">
+        <img src="photos/jahe-drink.jpg" alt="Rebusan Jahe" />
+        <div class="next-recipe-info"><div class="next-recipe-cat">Healing Drink</div><div class="next-recipe-name">Rebusan Jahe + Madu</div></div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><div class="footer-brand-name">NourishWithGina</div><div class="footer-tagline">Tastes guilty. Isn't.</div></div>
+      <div class="footer-links"><a href="index.html">Home</a><a href="recipes.html">Recipes</a><a href="https://instagram.com/gustigina" target="_blank">@gustigina</a></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2026 NourishWithGina.</span><span class="footer-sign">Tastes guilty. Isn't. 🌿</span></div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.style.width = e.target.style.getPropertyValue('--target-width'); });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.barometer-fill').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

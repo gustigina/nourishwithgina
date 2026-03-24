@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Gusti Gina — NourishWithGina</title>
+  <meta name="description" content="Gusti Gina — Actress, writer, and the woman behind NourishWithGina. A story about healing, food, and learning to take care of yourself first." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="recipes.html" data-i18n="nav_recipes">Recipes</a></li>
+      <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes">Recipes</a>
+    <a href="about.html" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
+    <button id="mobileLangBtn" onclick="window.__nwgToggleLang()" style="background:none;border:1px solid rgba(245,235,220,0.3);border-radius:2rem;padding:0.6rem 1.2rem;cursor:pointer;color:var(--cream);font-size:0.85rem;font-weight:700;margin-top:0.5rem;letter-spacing:0.06em;">🇮🇩 ID</button>
+  </div>
+
+  <!-- HERO -->
+  <section style="background:var(--darkbrown);padding:8rem 2rem 5rem;text-align:center;">
+    <div style="max-width:680px;margin:0 auto;">
+      <div style="font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1.5rem;" data-i18n="about_label">About</div>
+      <h1 style="font-family:var(--font-serif);font-size:clamp(2.5rem,6vw,4.5rem);color:var(--cream);font-weight:300;margin:0 0 1.5rem;line-height:1.1;">Gusti Gina</h1>
+      <p style="font-size:1rem;color:rgba(245,235,220,0.6);letter-spacing:0.08em;text-transform:uppercase;font-weight:500;" data-i18n="about_roles">Actress · Writer · Content Creator</p>
+    </div>
+  </section>
+
+  <!-- PORTRAIT + STORY -->
+  <section style="background:var(--cream);padding:0;">
+
+    <!-- Full-width portrait -->
+    <div style="max-width:480px;margin:0 auto;padding:4rem 2rem 0;">
+      <img
+        src="gina-portrait.jpg"
+        alt="Gusti Gina"
+        style="width:100%;border-radius:1.5rem;display:block;filter:sepia(8%) saturate(110%) brightness(1.02);"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Story text -->
+    <div style="max-width:660px;margin:0 auto;padding:4rem 2rem 5rem;">
+      <p class="about-story-p" style="font-family:var(--font-serif);font-size:clamp(1.2rem,2.5vw,1.5rem);font-style:italic;color:var(--darkbrown);line-height:1.7;margin-bottom:2rem;" data-i18n="about_story_opener">
+        I didn't learn to cook in a kitchen that smelled like warmth.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_1">
+        I learned to cook because I had to. Because sometimes survival looks like figuring out how to feed yourself and the people you love, on a budget, with what's available, when you're already exhausted.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_2">
+        I grew up carrying a lot. I raised my siblings. I smiled for cameras before I knew how to rest. I built a career out of storytelling, books, films, a million strangers watching me on their phones, while quietly falling apart in ways nobody could see.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_3">
+        Food was the first thing that made me slow down.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_4">
+        Not fancy food. Not recipes from culinary school. Just, what if I made something that actually nourished me? What if eating could be an act of care instead of an afterthought?
+      </p>
+      <p class="about-story-p" style="font-family:var(--font-serif);font-size:1.2rem;font-style:italic;color:var(--terracotta);" data-i18n="about_story_pivot">
+        That question changed everything.
+      </p>
+
+      <hr style="border:none;border-top:1px solid rgba(44,26,14,0.12);margin:2.5rem 0;" />
+
+      <p class="about-story-p" data-i18n="about_story_nwg">
+        <strong>NourishWithGina</strong> is where I keep what I've figured out. Recipes that are clean but never boring. Food that works with your body, not against it. The science behind why certain ingredients make you feel alive, and the honest truth that pleasure and healing are not opposites.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_identity">
+        I'm Gusti Gina. Actress. Writer. Content creator. Indonesian, Banjarese, and deeply proud of both.
+      </p>
+      <p class="about-story-p" data-i18n="about_story_forher">
+        This space is for every woman who has spent years taking care of everyone else and is finally learning, slowly, imperfectly, to take care of herself first.
+      </p>
+      <p class="about-story-p" style="font-family:var(--font-serif);font-size:1.25rem;font-style:italic;color:var(--darkbrown);" data-i18n="about_story_close">
+        You deserve food that tastes like love.
+      </p>
+
+      <!-- Social links -->
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:2.5rem;">
+        <a href="https://tiktok.com/@gustigina" target="_blank" rel="noopener" class="about-social-btn" style="color:var(--darkbrown);border-color:rgba(44,26,14,0.25);background:rgba(44,26,14,0.05);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok @gustigina
+        </a>
+        <a href="https://instagram.com/gustigina" target="_blank" rel="noopener" class="about-social-btn" style="color:var(--darkbrown);border-color:rgba(44,26,14,0.25);background:rgba(44,26,14,0.05);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram @gustigina
+        </a>
+      </div>
+
+      <a href="recipes.html" style="display:inline-block;margin-top:2.5rem;padding:0.85rem 2rem;background:var(--darkbrown);color:var(--cream);text-decoration:none;border-radius:2rem;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:background 0.2s;" data-i18n="about_cta_recipes">See the Recipes</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline" data-i18n="footer_tagline">Tastes guilty. Isn't.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="recipes.html" data-i18n="nav_recipes">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@gustigina" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer_copy">Made with love & science by Gina</span>
+      <span class="footer-sign" data-i18n="footer_sign">Tastes guilty. Isn't. 🌿</span>
+    </div>
+  </footer>
+
+  <!-- Floating lang toggle -->
+  <div id="floatingLang" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;background:rgba(44,26,14,0.88);border:1px solid rgba(245,235,220,0.25);border-radius:2rem;padding:0.5rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.4rem;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.borderColor='rgba(245,235,220,0.5)'" onmouseout="this.style.borderColor='rgba(245,235,220,0.25)'">
+    <span id="floatingLangInner" style="font-size:0.8rem;font-weight:700;letter-spacing:0.06em;color:var(--cream,#f5ebdc);">🇮🇩 ID</span>
+  </div>
+
+  <script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const navClose = document.getElementById('navClose');
+  hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+  navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+  </script>
+  <script src="lang.js"></script>
+
+  <style>
+  .about-story-p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #3a2010;
+    margin-bottom: 1.4rem;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+  }
+  </style>
+</body>
+</html>
