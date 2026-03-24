@@ -158,15 +158,18 @@ function getPersonalizedTop6() {
 function buildCard(recipe, isFirst, lang) {
   var cat = lang === 'id' ? recipe.cat_id : recipe.cat_en;
   var title = lang === 'id' ? recipe.title_id : recipe.title_en;
-  var cardClass = isFirst ? 'masonry-card masonry-card--large fade-in visible' : 'masonry-card fade-in visible';
-  return '<a href="' + recipe.page + '" style="text-decoration:none;color:inherit;display:block;">' +
-    '<article class="' + cardClass + '" data-category="main">' +
-    '<img class="masonry-card-img" src="' + recipe.photo + '" alt="' + title + '" loading="lazy" />' +
-    '<div class="masonry-card-body">' +
-    '<div class="masonry-card-category">' + cat + '</div>' +
+  return '<article class="recipe-card featured-card fade-in visible">' +
+    '<a href="' + recipe.page + '" style="position:absolute;inset:0;z-index:5;"></a>' +
+    '<img class="recipe-card-img" src="' + recipe.photo + '" alt="' + title + '" loading="lazy" />' +
+    '<div class="recipe-card-overlay"></div>' +
+    '<div class="recipe-card-base">' +
+    '<div class="recipe-card-sub">' + cat + '</div>' +
     '<h3 class="recipe-card-title">' + title + '</h3>' +
-    '<a href="' + recipe.page + '" class="card-cta" data-i18n="card_view">View Recipe →</a>' +
-    '</div></article></a>';
+    '</div>' +
+    '<div class="recipe-card-hover-content">' +
+    '<a href="' + recipe.page + '" class="card-cta">View Recipe →</a>' +
+    '</div>' +
+    '</article>';
 }
 
 function renderFeatured() {
