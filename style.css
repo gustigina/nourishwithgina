@@ -1765,3 +1765,32 @@ a {
   inset: 0;
   z-index: 5;
 }
+
+/* ── Homepage featured masonry grid ── */
+.home-masonry {
+  columns: 3;
+  column-gap: 1.25rem;
+  width: 100%;
+}
+.home-masonry .masonry-card {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+.home-masonry .masonry-card-img {
+  height: 220px;
+}
+.home-masonry .masonry-card:nth-child(1) .masonry-card-img,
+.home-masonry .masonry-card:nth-child(5) .masonry-card-img {
+  height: 280px;
+}
+.home-masonry .masonry-card:nth-child(3) .masonry-card-img,
+.home-masonry .masonry-card:nth-child(8) .masonry-card-img {
+  height: 180px;
+}
+@media (max-width: 900px) {
+  .home-masonry { columns: 2; }
+}
+@media (max-width: 540px) {
+  .home-masonry { columns: 1; }
+  .home-masonry .masonry-card-img { height: 200px !important; }
+}

@@ -127,10 +127,11 @@ window.NWG_RECIPES = [
 // Default order (shown to new visitors)
 var DEFAULT_ORDER = [
   'korean-beef', 'tuna-seared', 'mayak-eggs-soy',
-  'cherry-tomato', 'tumis-tempe-terong', 'tuna-marinated'
+  'cherry-tomato', 'tumis-tempe-terong', 'tuna-marinated',
+  'mayak-eggs-fish', 'jahe', 'sesame-cucumber', 'zucchini-buncis'
 ];
 
-function getPersonalizedTop6() {
+function getPersonalizedTop10() {
   var views = {};
   try { views = JSON.parse(localStorage.getItem('nwg_views') || '{}'); } catch(e) {}
 
@@ -152,24 +153,20 @@ function getPersonalizedTop6() {
   });
 
   // Return top 6, but always ensure first card = most viewed (for large card slot)
-  return sorted.slice(0, 6);
+  return sorted.slice(0, 10);
 }
 
 function buildCard(recipe, isFirst, lang) {
   var cat = lang === 'id' ? recipe.cat_id : recipe.cat_en;
   var title = lang === 'id' ? recipe.title_id : recipe.title_en;
-  return '<article class="recipe-card featured-card fade-in visible">' +
-    '<a href="' + recipe.page + '" style="position:absolute;inset:0;z-index:5;"></a>' +
-    '<img class="recipe-card-img" src="' + recipe.photo + '" alt="' + title + '" loading="lazy" />' +
-    '<div class="recipe-card-overlay"></div>' +
-    '<div class="recipe-card-base">' +
-    '<div class="recipe-card-sub">' + cat + '</div>' +
-    '<h3 class="recipe-card-title">' + title + '</h3>' +
-    '</div>' +
-    '<div class="recipe-card-hover-content">' +
+  return '<a href="' + recipe.page + '" style="text-decoration:none;color:inherit;display:block;">' +
+    '<article class="masonry-card fade-in visible">' +
+    '<img class="masonry-card-img" src="' + recipe.photo + '" alt="' + title + '" loading="lazy" />' +
+    '<div class="masonry-card-body">' +
+    '<div class="masonry-card-category">' + cat + '</div>' +
+    '<h2 class="masonry-card-title">' + title + '</h2>' +
     '<a href="' + recipe.page + '" class="card-cta">View Recipe →</a>' +
-    '</div>' +
-    '</article>';
+    '</div></article></a>';
 }
 
 function renderFeatured() {
@@ -177,12 +174,12 @@ function renderFeatured() {
   if (!container) return;
 
   var lang = localStorage.getItem('nwg_lang') || 'en';
-  var top6ids = getPersonalizedTop6();
+  var top10ids = getPersonalizedTop10();
   var recipeMap = {};
   window.NWG_RECIPES.forEach(function(r) { recipeMap[r.id] = r; });
 
   var html = '';
-  top6ids.forEach(function(id, i) {
+  top10ids.forEach(function(id, i) {
     var r = recipeMap[id];
     if (r) html += buildCard(r, i === 0, lang);
   });
