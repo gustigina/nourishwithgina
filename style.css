@@ -1824,7 +1824,7 @@ a {
 
 /* ── Email capture section ── */
 .email-section {
-  background: var(--dark);
+  background: var(--darkbrown);
   padding: 5rem 2rem;
   text-align: center;
 }
@@ -1861,7 +1861,7 @@ a {
 .email-input {
   flex: 1;
   padding: 0.85rem 1.4rem;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.1);
   border: none;
   outline: none;
   color: var(--cream);
@@ -1869,7 +1869,7 @@ a {
   font-family: var(--font-sans);
   min-width: 0;
 }
-.email-input::placeholder { color: rgba(245,235,220,0.35); }
+.email-input::placeholder { color: rgba(245,235,220,0.5); }
 .email-btn {
   min-height: 44px;
   padding: 0.85rem 1.6rem;

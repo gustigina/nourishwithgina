@@ -39,10 +39,10 @@ const NWG_TRANSLATIONS = {
     about_body: "I'm a writer, actress, and content creator from Indonesia. I cook because it centers me — and because I believe that what you put in your body is one of the most powerful decisions you make every day.<br><br>These recipes are real. No performance, no perfection. Just the things I actually cook, eat, and feel good about.",
     about_cta: "See All Recipes →",
     // Footer
-    footer_tagline: "Taste guilty, but it isn't.",
+    footer_tagline: "Tastes guilty. Isn't.",
     footer_links_title: "Explore",
     footer_connect: "Connect",
-    footer_sign: "Taste guilty, but it isn't. 🌿",
+    footer_sign: "Tastes guilty. Isn't. 🌿",
     footer_copy: "Made with love & science by Gina",
     // Recipes page
     recipes_hero_label: "The Kitchen",
@@ -113,10 +113,10 @@ const NWG_TRANSLATIONS = {
     about_body: "Aku seorang penulis, aktris, dan content creator dari Indonesia. Aku memasak karena itu membuatku tenang — dan karena aku percaya bahwa apa yang kamu masukkan ke dalam tubuhmu adalah salah satu keputusan paling powerful yang kamu buat setiap hari.<br><br>Resep-resep ini nyata. Tanpa pencitraan, tanpa kesempurnaan. Hanya hal-hal yang benar-benar aku masak, makan, dan membuat aku merasa baik.",
     about_cta: "Lihat Semua Resep →",
     // Footer
-    footer_tagline: "Taste guilty, tapi ternyata tidak.",
+    footer_tagline: "Tastes guilty. Isn't.",
     footer_links_title: "Jelajahi",
     footer_connect: "Terhubung",
-    footer_sign: "Taste guilty, tapi ternyata tidak. 🌿",
+    footer_sign: "Tastes guilty. Isn't. 🌿",
     footer_copy: "Dibuat dengan cinta & sains oleh Gina",
     // Recipes page
     recipes_hero_label: "Dapur",
