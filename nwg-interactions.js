@@ -76,6 +76,7 @@ function initTickOff() {
 // FEATURE 5: Live cook timer
 // ══════════════════════════════════════════════
 function initCookTimer() {
+  if (document.getElementById('cookTimerWrap')) return; // already added
   // Find cook time from stats bar
   var statPills = document.querySelectorAll('.stat-pill-text');
   var cookTime = 0;
@@ -249,9 +250,11 @@ function initAmbientSound() {
 function initPrintButton() {
   var statsBar = document.querySelector('.stats-bar');
   if (!statsBar) return;
+  if (statsBar.querySelector('.nwg-print-btn')) return; // already added
 
   var printBtn = document.createElement('button');
   printBtn.innerHTML = '🖨 <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Print / Save PDF</span>';
+  printBtn.className = 'nwg-print-btn';
   printBtn.style.cssText = 'background:none;border:1px solid rgba(44,26,14,0.2);border-radius:2rem;padding:0.5rem 1.1rem;cursor:pointer;font-family:var(--font-sans);color:var(--darkbrown,#2c1a0e);display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;transition:all 0.2s;font-size:0.8rem;';
   printBtn.onmouseover = function() { this.style.background='var(--terracotta)'; this.style.color='#fff'; this.style.borderColor='var(--terracotta)'; };
   printBtn.onmouseout = function() { this.style.background='none'; this.style.color='var(--darkbrown,#2c1a0e)'; this.style.borderColor='rgba(44,26,14,0.2)'; };
@@ -445,25 +448,9 @@ function initCardFlip() {
 }
 
 // ══════════════════════════════════════════════
-// INIT on DOM ready
+// INIT on DOM ready — each function called exactly once
 // ══════════════════════════════════════════════
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initCinematicScroll();
-  initPrintButton();
-  initAmbientSound();
-  initMoodSelector();
-  initSearch();
-    initPrintButton();
-    initPrintButton();
-  initAmbientSound();
-    initMoodSelector();
-    initSearch();
-    initCardFlip();
-    initTickOff();
-    initCookTimer();
-  });
-} else {
+function nwgInit() {
   initCinematicScroll();
   initPrintButton();
   initAmbientSound();
@@ -472,6 +459,12 @@ if (document.readyState === 'loading') {
   initCardFlip();
   initTickOff();
   initCookTimer();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', nwgInit);
+} else {
+  nwgInit();
 }
 
 })();
