@@ -33,6 +33,35 @@
 }
 
 /* ============================================
+   GLOBAL PHOTO TONE — NourishWithGina
+   Earthy warm filter, consistent across all images
+   Rule: food must still look DELICIOUS
+   ============================================ */
+.masonry-card-img,
+.recipe-hero-img,
+.next-recipe-card img,
+.recipe-photo,
+img.food-photo {
+  filter: brightness(1.06) contrast(1.06) saturate(1.18) sepia(0.10) hue-rotate(-3deg);
+  transition: filter 0.3s ease;
+}
+
+/* Hero background images — handled via ::before pseudo overlay instead */
+.recipe-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(198, 123, 92, 0.08) 0%,
+    rgba(143, 175, 126, 0.05) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
    RESET & BASE
    ============================================ */
 *, *::before, *::after {
@@ -1078,8 +1107,7 @@ a {
   height: 220px;
   object-fit: cover;
   transition: transform 0.5s var(--ease-smooth);
-  filter: brightness(1.05) contrast(1.08) saturate(1.15) sepia(0.12) warm(0);
-  filter: brightness(1.05) contrast(1.08) saturate(1.12) sepia(0.08);
+  filter: brightness(1.06) contrast(1.06) saturate(1.18) sepia(0.10) hue-rotate(-3deg);
 }
 
 .masonry-card:nth-child(1) .masonry-card-img { height: 280px; }
@@ -1202,6 +1230,7 @@ a {
   max-height: 85vh;
   object-fit: contain;
   display: block;
+  filter: brightness(1.06) contrast(1.06) saturate(1.18) sepia(0.10) hue-rotate(-3deg);
 }
 
 .recipe-hero-overlay {
@@ -1691,4 +1720,25 @@ a {
   .hero-guilty-line { font-size: 45px; }
   .recipes-masonry { columns: 1; }
   .stat-pill { padding: 0.5rem 0.9rem; }
+}
+
+/* ── About social buttons ── */
+.about-social-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 2rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(4px);
+}
+.about-social-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.35);
 }
