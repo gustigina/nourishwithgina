@@ -113,7 +113,17 @@ window.NWG_RECIPES = [
     size: 'normal',
   },
   {
-    id: 'zucchini-buncis',
+    id: 'egg-drop-soup',
+    page: 'recipe-egg-drop-soup.html',
+    photo: 'photos/egg-drop-soup.jpg',
+    cat_en: '🌿 Healing · 15 min',
+    cat_id: '🌿 Penyembuh · 15 mnt',
+    title_en: 'Egg Drop Soup',
+    title_id: 'Egg Drop Soup',
+    size: 'normal',
+  },
+  {
+  id: 'zucchini-buncis',
     page: 'recipe-zucchini-buncis.html',
     photo: 'photos/zucchini-green-beans.png',
     cat_en: 'Side Dish · 15 min',

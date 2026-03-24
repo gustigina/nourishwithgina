@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Egg Drop Soup — NourishWithGina</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra page-specific styles */
+    .recipe-content {
+      max-width: 100%;
+    }
+
+    .ingredient-group-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--terracotta);
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 400;
+    }
+
+    .recipe-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(44, 26, 14, 0.08);
+      margin: 2.5rem 0;
+    }
+
+    /* Sticky sidebar override for desktop */
+    @media (min-width: 901px) {
+      .recipe-sidebar {
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--terracotta-light) transparent;
+      }
+    }
+
+    /* Related recipes teaser */
+    .related-section {
+      background: var(--cream);
+      padding: 5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .related-card {
+      display: flex;
+      gap: 1rem;
+      background: var(--offwhite);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(44,26,14,0.07);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .related-card-img {
+      width: 120px;
+      height: 100%;
+      min-height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .related-card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .related-card-cat {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.3rem;
+    }
+
+    .related-card-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--darkbrown);
+    }
+
+    @media (max-width: 700px) {
+      .related-section { padding: 3rem 2rem; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">NourishWithGina</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="recipes.html" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a></li>
+      <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_home">Home</a>
+    <a href="recipes.html" onclick="closeMobileNav()" data-i18n="nav_recipes" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+    <a href="index.html#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
+    <button onclick="window.__nwgToggleLang();closeMobileNav?closeMobileNav():null" id="mobileLangBtn" style="background:none;border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:8px 20px;color:inherit;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:0.5rem;letter-spacing:0.05em;">🇮🇩 ID</button>
+  </div>
+
+
+  <!-- ============ RECIPE HERO ============ -->
+  <section class="recipe-hero">
+    <img
+      class="recipe-hero-img"
+      src="photos/egg-drop-soup.jpg"
+      alt="Egg Drop Soup"
+    />
+    <div class="recipe-hero-overlay"></div>
+
+    <div class="recipe-hero-nav">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: var(--cream); opacity: 0.9;">Egg Drop Soup</span>
+      </nav>
+    </div>
+    </section>
+
+  <div class="recipe-hero-title-wrap">
+    <h1 class="recipe-hero-title">Egg Drop Soup</h1>
+  </div>
+
+  <!-- ============ QUICK STATS BAR ============ -->
+  <div class="stats-bar">
+    <div class="stat-pill">
+      <span class="stat-pill-icon">⏱</span>
+      <span class="stat-pill-text">15 min</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">👤</span>
+      <span class="stat-pill-text">4 servings</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">🔥</span>
+      <span class="stat-pill-text">~120 kcal</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-icon">💪</span>
+      <span class="stat-pill-text">45g protein</span>
+    </div>
+  </div>
+
+
+  <!-- ============ RECIPE CONTENT ============ -->
+  <div class="recipe-content">
+
+    <!-- LEFT — Main content -->
+    <div class="recipe-main">
+
+      <!-- Ingredients -->
+      <section class="fade-in">
+        <h2 class="recipe-section-title" data-i18n="recipe_section_ingredients">Ingredients</h2>
+        <div id="recipe-ingredients-wrap"><div class="ingredient-group-title">Broth</div>
+        <ul class="ingredients-list">
+          <li>1.2 litres water</li>
+          <li>2 tsp chicken stock powder (or homemade chicken broth)</li>
+          <li>4–5 thin slices fresh ginger</li>
+          <li>3–4 garlic cloves, crushed</li>
+          <li>¾–1 tsp salt</li>
+          <li>½ tsp white pepper</li>
+        </ul>
+        <div class="ingredient-group-title" style="margin-top:1rem;">Thickener</div>
+        <ul class="ingredients-list">
+          <li>2 tbsp cornstarch (maizena)</li>
+          <li>4 tbsp cold water — mix with cornstarch first before adding to pot</li>
+        </ul>
+        <div class="ingredient-group-title" style="margin-top:1rem;">Eggs &amp; Finishing</div>
+        <ul class="ingredients-list">
+          <li>6 eggs, beaten until smooth</li>
+          <li>1 tsp sesame oil</li>
+          <li>Spring onions (daun bawang), thinly sliced</li>
+          <li>Extra white pepper to taste</li>
+        </ul>
+        </div>
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Instructions -->
+      <section class="fade-in" style="transition-delay: 0.1s;">
+        <h2 class="recipe-section-title" data-i18n="recipe_section_steps">How to Make It</h2>
+
+        <ol id="recipe-steps-wrap" class="instructions-list">
+          <li class="instruction-item"><span class="instruction-number">01</span><p class="instruction-text"><strong>Build the broth.</strong> Add water, stock powder, ginger slices, and crushed garlic to a pot. Bring to a boil. Reduce heat and let simmer 3–4 minutes so the aromatics infuse. Remove ginger and garlic if you prefer a cleaner texture.</p></li>
+          <li class="instruction-item"><span class="instruction-number">02</span><p class="instruction-text"><strong>Mix your cornstarch slurry.</strong> Combine 2 tbsp cornstarch with 4 tbsp cold water in a small bowl. Stir until fully dissolved — no lumps. This step must be done before it goes into the hot pot.</p></li>
+          <li class="instruction-item"><span class="instruction-number">03</span><p class="instruction-text"><strong>Thicken the broth.</strong> Reduce heat to medium. Pour in the cornstarch slurry while stirring constantly. The broth will thicken and turn silky within 30 seconds. This glossy texture is what makes the egg ribbons so beautiful.</p></li>
+          <li class="instruction-item"><span class="instruction-number">04</span><p class="instruction-text"><strong>The egg ribbons — the key step.</strong> Reduce heat to the lowest possible setting. Beat 6 eggs until smooth. Because the volume is large, pour in two batches: slowly drizzle half the egg while stirring the broth in slow circular motions. Wait 15 seconds, then pour the second half. Keep stirring gently — never fast. The eggs will form long silky ribbons.</p></li>
+          <li class="instruction-item"><span class="instruction-number">05</span><p class="instruction-text"><strong>Finish and serve.</strong> Turn off heat. Add sesame oil and extra white pepper. Ladle into bowls, top generously with sliced spring onions. Drink it warm.</p></li>
+        </ol>
+      </section>
+
+      <div class="recipe-divider"></div>
+
+      <!-- Chef's note -->
+      <section class="fade-in" style="transition-delay: 0.2s;">
+        <div class="chefs-note">
+          <div class="chefs-note-label">🌿 Chef's Note from Gina</div>
+          <p class="chefs-note-text">
+            "The egg ribbons will tell you if you did it right. If they come out silky and long — you nailed the heat. If they're clumped or scrambled — the heat was too high or you poured too fast. Low heat, slow pour, gentle stir. That's the whole secret."
+          </p>
+        </div>
+      </section>
+
+    </div><!-- end recipe-main -->
+
+
+    <!-- RIGHT — Sticky Sidebar -->
+    <aside class="recipe-sidebar">
+
+      <!-- The Verdict — Barometers -->
+      <div class="sidebar-card fade-in-right">
+        <h3 class="sidebar-card-title">The Verdict</h3>
+        <div class="barometer-list">
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_taste">Flavor</span>
+              <span class="barometer-score">8.8/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill taste" style="--fill-width: 72%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_clean">Clean Factor</span>
+              <span class="barometer-score">8.0/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill clean" style="--fill-width: 78%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label" data-i18n="recipe_barometer_mood">Mood Boost</span>
+              <span class="barometer-score">8.2/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill mood" style="--fill-width: 82%;"></div>
+            </div>
+          </div>
+
+          <div class="barometer-item">
+            <div class="barometer-header">
+              <span class="barometer-label">Energy Level</span>
+              <span class="barometer-score">9.0/10</span>
+            </div>
+            <div class="barometer-track">
+              <div class="barometer-fill energy" style="--fill-width: 90%;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nutrition -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.15s;">
+        <h3 class="sidebar-card-title">Nutrition</h3>
+        <div class="nutrition-big">
+          <div class="nutrition-kcal">120</div>
+          <div class="nutrition-kcal-label">calories per serving</div>
+          <div class="nutrition-macros">
+            <div class="macro-item">
+              <div class="macro-value">10g</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_protein">Protein</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">4g</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_carbs">Carbs</div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-value">7g</div>
+              <div class="macro-label" data-i18n="recipe_nutrition_fat">Fat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Psychonutrition note -->
+      <div class="psycho-note fade-in-right" style="transition-delay: 0.25s;">
+        <div class="psycho-note-label">🧠 Brain Food Note</div>
+        <p class="psycho-note-text">
+          Egg drop soup when you're sick is not a coincidence — it's ancient knowledge. Chicken broth contains glycine that soothes the gut lining and reduces inflammation. Ginger and garlic are natural antivirals. Eggs provide complete protein with cysteine, the same amino acid in flu medicine. Your body knows what it needs.
+        </p>
+      </div>
+
+      <!-- Best Eaten When -->
+      <div class="sidebar-card fade-in-right" style="transition-delay: 0.35s;">
+        <h3 class="sidebar-card-title">Best Eaten When</h3>
+        <div class="mood-tags">
+          <div class="mood-tag-item"><span class="mood-tag-icon">💪</span>Post-workout</div>
+<div class="mood-tag-item"><span class="mood-tag-icon">🌙</span>Date night</div>
+        </div>
+      </div>
+
+    </aside><!-- end sidebar -->
+
+  </div><!-- end recipe-content -->
+
+
+  <!-- ============ RELATED RECIPES ============ -->
+  <section class="related-section">
+    <div class="section-header fade-in">
+      <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 4rem);">More recipes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="related-grid">
+      <a href="recipe-korean-beef.html" class="related-card">
+        <img class="related-card-img" src="photos/egg-drop-soup.jpg" alt="Egg Drop Soup" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">Main dish · 30 min</div>
+          <div class="related-card-title">Korean Beef Bulgogi</div>
+        </div>
+      </a>
+      <a href="recipe-tuna-seared.html" class="related-card">
+        <img class="related-card-img" src="photos/tuna-seared.jpg" alt="Pan Seared Tuna" loading="lazy" />
+        <div class="related-card-body">
+          <div class="related-card-cat">Main dish · 15 min</div>
+          <div class="related-card-title">Pan Seared Tuna</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">NourishWithGina</div>
+        <div class="footer-tagline" data-i18n="footer_tagline">Tastes guilty. Isn't..</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="recipes.html" data-i18n="recipe_breadcrumb_recipes">Recipes</a>
+        <a href="https://instagram.com/gustigina" target="_blank">@gustigina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer_copy">Made with love & science by Gina</span>
+      <span class="footer-sign" data-i18n="footer_sign">Tastes guilty. Isn't.. 🌿</span>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // ——— Nav scroll ———
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ——— Hamburger ———
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const navClose = document.getElementById('navClose');
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    navClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // ——— IntersectionObserver: fade-ins ———
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Fallback: show all after 2.5s
+    setTimeout(() => {
+      fadeEls.forEach(el => el.classList.add('visible'));
+      document.querySelectorAll('.barometer-fill').forEach(el => el.classList.add('visible'));
+    }, 2500);
+
+    // ——— Barometer animation ———
+    const fills = document.querySelectorAll('.barometer-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Stagger each fill slightly
+          const delay = Array.from(fills).indexOf(entry.target) * 120;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    fills.forEach(f => barObserver.observe(f));
+
+    // ——— Hero parallax ———
+    const heroImg = document.querySelector('.recipe-hero-img');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroImg.style.transform = `scale(1.05) translateY(${scrolled * 0.2}px)`;
+      }
+    }, { passive: true });
+  </script>
+
+
+  <!-- ============ FLOATING LANG TOGGLE (mobile-friendly) ============ -->
+  <div id="floatingLangBtn" onclick="window.__nwgToggleLang()" style="position:fixed;bottom:1.5rem;right:1.2rem;z-index:9999;background:rgba(44,26,14,0.88);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:8px 14px;cursor:pointer;font-family:sans-serif;font-size:0.7rem;font-weight:700;color:#FAF3E0;display:flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(0,0,0,0.3);backdrop-filter:blur(8px);letter-spacing:0.04em;white-space:nowrap;"><span id="floatingLangInner">🇮🇩 ID</span></div>
+
+  <script>
+  // Recipe i18n content
+  (function() {
+    var RECIPE_CONTENT = {
+      en: {
+        title: "Egg Drop Soup",
+        hero_sub: "Healing · 15 min",
+        crumb: "Egg Drop Soup",
+        ingredients: "<div class=\"ingredient-group-title\">Broth</div><ul class=\"ingredients-list\"><li>1.2 litres water</li><li>2 tsp chicken stock powder (or homemade broth)</li><li>4–5 thin slices fresh ginger</li><li>3–4 garlic cloves, crushed</li><li>¾–1 tsp salt</li><li>½ tsp white pepper</li></ul><div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">Thickener</div><ul class=\"ingredients-list\"><li>2 tbsp cornstarch + 4 tbsp cold water — mix first</li></ul><div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">Eggs &amp; Finishing</div><ul class=\"ingredients-list\"><li>6 eggs, beaten smooth</li><li>1 tsp sesame oil</li><li>Spring onions, thinly sliced</li><li>Extra white pepper to taste</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Build the broth.</strong> Add water, stock, ginger, garlic to pot. Bring to boil, simmer 3–4 min. Remove ginger and garlic if preferred.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Mix cornstarch slurry.</strong> Combine cornstarch + cold water in a bowl. Stir until fully dissolved before adding to pot.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Thicken the broth.</strong> Reduce heat to medium. Pour in slurry while stirring constantly. Broth turns silky in 30 seconds.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>The egg ribbons.</strong> Lowest heat. Beat 6 eggs smooth. Pour in two batches — drizzle half while stirring slowly in circles, wait 15 sec, pour second half. Gentle stir = silky ribbons.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Finish and serve.</strong> Turn off heat. Add sesame oil + white pepper. Top with spring onions. Drink warm.</p></li>",
+        chef_note: "The egg ribbons will tell you if you did it right. Silky and long — you nailed the heat. Clumped or scrambled — too hot or poured too fast. Low heat, slow pour, gentle stir. That\'s the whole secret.",
+        brain_note: "Egg drop soup when you\'re sick is not a coincidence — it\'s ancient knowledge. Chicken broth contains glycine that soothes the gut lining and reduces inflammation. Ginger and garlic are natural antivirals. Eggs provide complete protein with cysteine, the same amino acid in flu medicine. Your body knows what it needs.",
+      },
+      id: {
+        title: "Egg Drop Soup",
+        hero_sub: "Penyembuh · 15 mnt",
+        crumb: "Egg Drop Soup",
+        ingredients: "<div class=\"ingredient-group-title\">Kaldu</div><ul class=\"ingredients-list\"><li>1,2 liter air</li><li>2 sdt kaldu ayam bubuk (atau kaldu ayam sisa masak)</li><li>4–5 iris tipis jahe segar</li><li>3–4 siung bawang putih, geprek</li><li>¾–1 sdt garam</li><li>½ sdt lada putih</li></ul><div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">Pengental</div><ul class=\"ingredients-list\"><li>2 sdm maizena + 4 sdm air dingin — aduk rata dulu sebelum masuk panci</li></ul><div class=\"ingredient-group-title\" style=\"margin-top:1rem;\">Telur &amp; Finishing</div><ul class=\"ingredients-list\"><li>6 butir telur, kocok sampai rata betul</li><li>1 sdt minyak wijen</li><li>Daun bawang, iris tipis</li><li>Lada putih tambahan secukupnya</li></ul>",
+        steps: "<li class=\"instruction-item\"><span class=\"instruction-number\">01</span><p class=\"instruction-text\"><strong>Buat kaldu.</strong> Masukkan air, kaldu bubuk, jahe, bawang putih ke panci. Didihkan, kecilkan api, biarkan 3–4 menit. Angkat jahe + bawang putih kalau tidak suka teksturnya.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">02</span><p class=\"instruction-text\"><strong>Siapkan larutan maizena.</strong> Aduk rata maizena + air dingin di mangkok kecil sebelum masuk panci. Tidak boleh ada gumpalan.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">03</span><p class=\"instruction-text\"><strong>Kentalkan kaldu.</strong> Kecilkan api ke sedang. Tuang larutan maizena sambil terus diaduk. Kuah jadi silky dalam 30 detik.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">04</span><p class=\"instruction-text\"><strong>Ribbon telur.</strong> Kecilkan api paling kecil. Kocok 6 telur sampai rata. Tuang dalam dua tahap: setengah dulu sambil aduk melingkar pelan, tunggu 15 detik, tuang sisanya. Aduk pelan = ribbon silky cantik.</p></li><li class=\"instruction-item\"><span class=\"instruction-number\">05</span><p class=\"instruction-text\"><strong>Finishing dan sajikan.</strong> Matikan api. Tambah minyak wijen + lada putih. Tabur daun bawang. Minum hangat-hangat.</p></li>",
+        chef_note: "Ribbon telurnya akan bilang kalau kamu berhasil. Panjang dan silky — apimu sempurna. Menggumpal atau hancur — terlalu panas atau terlalu cepat dituang. Api kecil, tuang pelan, aduk lembut. Itu saja rahasianya.",
+        brain_note: "Sup telur saat sakit bukan kebetulan — ini pengetahuan kuno. Kaldu ayam mengandung glisin yang menenangkan lapisan usus dan mengurangi peradangan. Jahe dan bawang putih adalah antiviral alami. Telur menyediakan protein lengkap dengan sistein, asam amino yang sama dengan obat flu. Tubuhmu tahu apa yang dibutuhkan.",
+      }
+    };
+
+    function applyRecipeContent(lang) {
+      var c = RECIPE_CONTENT[lang] || RECIPE_CONTENT.en;
+      var titleEl = document.querySelector('.recipe-hero-title');
+      var subEl = document.querySelector('.recipe-stat-main .stat-pill-text');
+      var crumbEl = document.querySelector('.breadcrumb span[style]');
+      var ingEl = document.getElementById('recipe-ingredients-wrap');
+      var stepsEl = document.getElementById('recipe-steps-wrap');
+      var chefEl = document.querySelector('.chefs-note-text');
+      var brainEl = document.querySelector('.psycho-note-text');
+      var ingGroupTitle = ingEl ? ingEl.querySelector('.ingredient-group-title') : null;
+      var ingList = ingEl ? ingEl.querySelector('.ingredients-list') : null;
+
+      if (titleEl) titleEl.textContent = c.title;
+      if (crumbEl) crumbEl.textContent = c.crumb;
+      // Safely swap ingredients: only replace inner content, not the wrapper
+      if (ingEl) {
+        // Create a temp container to parse HTML safely
+        var tmp = document.createElement('div');
+        tmp.innerHTML = c.ingredients;
+        // Clear only the group titles and lists inside the wrap
+        Array.from(ingEl.querySelectorAll('.ingredient-group-title, .ingredients-list')).forEach(function(el) { el.remove(); });
+        // Insert new content from temp
+        Array.from(tmp.childNodes).forEach(function(node) { ingEl.appendChild(node.cloneNode(true)); });
+      }
+      if (stepsEl) stepsEl.innerHTML = c.steps;
+      if (chefEl) chefEl.innerHTML = '\u201c' + c.chef_note + '\u201d';
+      if (brainEl) brainEl.textContent = c.brain_note;
+    }
+
+    // Apply immediately when script runs (after DOM parsed, before DOMContentLoaded)
+    function initRecipeLang() {
+      var lang = localStorage.getItem('nwg_lang') || 'en';
+      applyRecipeContent(lang);
+    }
+
+    // Run on DOMContentLoaded (lang.js also fires then — order is cursor.js → recipe script → lang.js)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Small delay to ensure lang.js has run first
+      setTimeout(function() {
+        var lang = localStorage.getItem('nwg_lang') || 'en';
+        applyRecipeContent(lang);
+        // Also trigger data-i18n elements via lang.js if available
+        if (window.__nwgApplyLang) window.__nwgApplyLang(lang);
+      }, 50);
+    });
+
+    // Re-apply when lang toggle is clicked
+    document.addEventListener('nwg_lang_change', function(e) {
+      applyRecipeContent(e.detail);
+    });
+  })();
+  </script>
+  <script src="cursor.js"></script>
+  <script src="nwg-views.js"></script>
+  <script src="lang.js"></script>
+</body>
+</html>
