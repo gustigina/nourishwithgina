@@ -4,6 +4,8 @@
 window.NWG_RECIPES = [
   {
     id: 'korean-beef',
+    back_tag: 'Why this works',
+    back_note: 'Lean beef + sesame = iron, zinc, and omega-3. The marinade\'s acidity pre-digests the protein. Your body absorbs more of every bite.',
     page: 'recipe-korean-beef.html',
     photo: 'photos/beef-bowl.jpg',
     cat_en: 'Main Dish · 30 min',
@@ -14,6 +16,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'tuna-seared',
+    back_tag: 'Brain food',
+    back_note: 'Tuna is one of the richest sources of DHA, the omega-3 that builds your brain. One bowl covers your weekly need.',
     page: 'recipe-tuna-seared.html',
     photo: 'photos/tuna-seared.jpg',
     cat_en: 'Main Dish · 15 min',
@@ -24,6 +28,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'mayak-eggs-soy',
+    back_tag: 'The science',
+    back_note: 'Marinating eggs in soy creates a Maillard reaction that deepens flavor without adding calories. High protein, zero guilt.',
     page: 'recipe-mayak-eggs-soy.html',
     photo: 'photos/mayak-eggs-soy.jpg',
     cat_en: 'Breakfast · 10 min + overnight',
@@ -34,6 +40,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'cherry-tomato',
+    back_tag: 'Why roast?',
+    back_note: 'Heat concentrates lycopene, the antioxidant in tomatoes, by up to 3x. Roasted is actually healthier than raw.',
     page: 'recipe-cherry-tomato.html',
     photo: 'photos/cherry-tomato.jpg',
     cat_en: 'Side Dish · 12 min',
@@ -44,6 +52,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'tuna-marinated',
+    back_tag: 'Healing fat',
+    back_note: 'Sesame oil contains sesamol, a powerful antioxidant that protects liver cells. This dish is medicine dressed as lunch.',
     page: 'recipe-tuna-marinated.html',
     photo: 'photos/tuna-marinated.jpg',
     cat_en: 'Main Dish · 20 min',
@@ -54,6 +64,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'tumis-tempe-terong',
+    back_tag: 'Plant power',
+    back_note: 'Fermentation makes tempeh protein more bioavailable than most meats. Combined with eggplant anthocyanins, this is brain food.',
     page: 'recipe-tumis-tempe-terong.html',
     photo: 'photos/tumis-tempe-terong.jpg',
     cat_en: 'Main Dish · 20 min',
@@ -64,6 +76,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'mayak-eggs-fish',
+    back_tag: 'Fish sauce magic',
+    back_note: 'Fish sauce is fermented, rich in umami glutamates that signal satiety faster. You eat less but feel more satisfied.',
     page: 'recipe-mayak-eggs-fish.html',
     photo: 'photos/mayak-eggs-fish.jpg',
     cat_en: 'Breakfast · 10 min + overnight',
@@ -74,6 +88,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'jahe',
+    back_tag: 'Ancient antiviral',
+    back_note: 'Gingerol, the active compound in fresh ginger, blocks virus replication at a cellular level. This is what your body wants when it\'s fighting something.',
     page: 'recipe-jahe.html',
     photo: 'photos/jahe-drink.jpg',
     cat_en: '🌿 Healing · 10 min',
@@ -84,6 +100,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'couscous',
+    back_tag: 'Couscous truth',
+    back_note: 'Couscous has a lower glycemic index than rice or bread. It digests slower, keeping you full and focused longer.',
     page: 'recipe-couscous.html',
     photo: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80',
     cat_en: 'Side Dish · 15 min',
@@ -94,6 +112,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'steam-inhalasi',
+    back_tag: 'Breathe easier',
+    back_note: 'Allicin from garlic, gingerol from ginger, eugenol from cloves, all activated by steam. Your airways clear within minutes.',
     page: 'recipe-steam-inhalasi.html',
     photo: 'photos/steam-inhalasi.jpg',
     cat_en: '🌿 Healing · 20 min',
@@ -104,6 +124,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'sesame-cucumber',
+    back_tag: 'Cooling food',
+    back_note: 'In traditional Korean medicine, cucumber is considered a \'cooling\' food that reduces internal inflammation. Sesame adds zinc for immunity.',
     page: 'recipe-sesame-cucumber.html',
     photo: 'photos/sesame-cucumber.png',
     cat_en: 'Side Dish · 10 min',
@@ -114,6 +136,8 @@ window.NWG_RECIPES = [
   },
   {
     id: 'egg-drop-soup',
+    back_tag: 'Ancient medicine',
+    back_note: 'Chicken broth glycine soothes your gut lining. Ginger blocks virus replication. Eggs deliver cysteine, the same compound in flu medicine.',
     page: 'recipe-egg-drop-soup.html',
     photo: 'photos/egg-drop-soup.jpg',
     cat_en: '🌿 Healing · 15 min',
@@ -124,6 +148,8 @@ window.NWG_RECIPES = [
   },
   {
   id: 'zucchini-buncis',
+    back_tag: 'Green means GO',
+    back_note: 'Zucchini is 95% water and packed with potassium. Green beans have more protein than most vegetables. Simple and seriously effective.',
     page: 'recipe-zucchini-buncis.html',
     photo: 'photos/zucchini-green-beans.png',
     cat_en: 'Side Dish · 15 min',
@@ -169,8 +195,10 @@ function getPersonalizedTop10() {
 function buildCard(recipe, isFirst, lang) {
   var cat = lang === 'id' ? recipe.cat_id : recipe.cat_en;
   var title = lang === 'id' ? recipe.title_id : recipe.title_en;
+  var backNote = recipe.back_note || 'A recipe crafted with care and real ingredients.';
+  var backTag = recipe.back_tag || 'Why this works';
   return '<a href="' + recipe.page + '" style="text-decoration:none;color:inherit;display:block;">' +
-    '<article class="masonry-card fade-in visible">' +
+    '<article class="masonry-card fade-in visible" data-back-note="' + backNote + '" data-back-tag="' + backTag + '" data-href="' + recipe.page + '">' +
     '<img class="masonry-card-img" src="' + recipe.photo + '" alt="' + title + '" loading="lazy" />' +
     '<div class="masonry-card-body">' +
     '<div class="masonry-card-category">' + cat + '</div>' +
