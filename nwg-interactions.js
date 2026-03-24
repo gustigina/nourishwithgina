@@ -403,6 +403,8 @@ function initCinematicScroll() {
 
 // ── Card flip: wrap existing masonry cards ──
 function initCardFlip() {
+  // Skip flip on touch/mobile devices — tap should navigate directly
+  if (window.matchMedia('(hover: none)').matches) return;
   var cards = document.querySelectorAll('.masonry-card');
   cards.forEach(function(card) {
     if (card.querySelector('.masonry-card-inner')) return; // already wrapped

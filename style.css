@@ -164,6 +164,9 @@ a {
 .nav-hamburger {
   min-height: 44px;
   min-width: 44px;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
   display: none;
   flex-direction: column;
   gap: 5px;
@@ -1664,9 +1667,7 @@ a {
   .nav { padding: 1.25rem 1.5rem; }
   .nav.scrolled { padding: 0.75rem 1.5rem; }
   .nav-links { display: none; }
-  .nav-hamburger {
-  min-height: 44px;
-  min-width: 44px; display: flex; }
+  .nav-hamburger { display: flex; background: transparent; border: none; }
 
   .intro {
     grid-template-columns: 1fr;
@@ -1908,18 +1909,21 @@ a {
 }
 
 /* ── Recipe card 3D flip ── */
-.masonry-card {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
 .masonry-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.55s cubic-bezier(0.45, 0, 0.55, 1);
+  transform-origin: center center;
 }
-.masonry-card:hover .masonry-card-inner,
+/* Flip only on non-touch devices */
+@media (hover: hover) {
+  .masonry-card { perspective: 900px; }
+  .masonry-card:hover .masonry-card-inner {
+    transform: rotateY(180deg);
+  }
+}
 .masonry-card.flipped .masonry-card-inner {
   transform: rotateY(180deg);
 }
