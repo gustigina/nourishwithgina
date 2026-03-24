@@ -162,6 +162,8 @@ a {
 }
 
 .nav-hamburger {
+  min-height: 44px;
+  min-width: 44px;
   display: none;
   flex-direction: column;
   gap: 5px;
@@ -373,7 +375,7 @@ a {
 
 .hero-scroll span {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -618,7 +620,7 @@ a {
 
 .recipe-card-sub {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--terracotta);
@@ -641,7 +643,7 @@ a {
 
 .card-bar-label {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -682,7 +684,7 @@ a {
 
 .card-tag {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -694,10 +696,13 @@ a {
 }
 
 .card-cta {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
   display: inline-block;
   margin-top: 0.75rem;
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -770,7 +775,7 @@ a {
 
 .psycho-label {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -888,7 +893,7 @@ a {
 
 .about-label {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -1057,7 +1062,7 @@ a {
 
 .filter-pill {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1134,7 +1139,7 @@ a {
 
 .masonry-card-category {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1168,7 +1173,7 @@ a {
 
 .masonry-bar-label {
   font-family: var(--font-body);
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1208,7 +1213,7 @@ a {
 
 .masonry-tag {
   font-family: var(--font-body);
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1266,7 +1271,7 @@ a {
 
 .breadcrumb {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1445,7 +1450,7 @@ a {
 
 .chefs-note-label {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -1499,7 +1504,7 @@ a {
 
 .barometer-label {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1551,7 +1556,7 @@ a {
 
 .nutrition-kcal-label {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1579,7 +1584,7 @@ a {
 
 .macro-label {
   font-family: var(--font-body);
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1597,7 +1602,7 @@ a {
 
 .psycho-note-label {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1659,7 +1664,9 @@ a {
   .nav { padding: 1.25rem 1.5rem; }
   .nav.scrolled { padding: 0.75rem 1.5rem; }
   .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-hamburger {
+  min-height: 44px;
+  min-width: 44px; display: flex; }
 
   .intro {
     grid-template-columns: 1fr;
@@ -1722,6 +1729,16 @@ a {
   }
   .recipe-main { padding-right: 0; border-right: none; border-bottom: 1px solid rgba(44, 26, 14, 0.08); padding-bottom: 3rem; margin-bottom: 3rem; }
   .recipe-sidebar { padding-left: 0; position: static; }
+}
+
+
+@media (max-width: 720px) {
+  .recipes-masonry { columns: 2; }
+  .home-masonry { columns: 2; }
+  .intro { padding: 4rem 1.5rem; }
+  .recipes-section { padding: 3rem 1.5rem; }
+  .email-form { max-width: 100%; }
+  .about-socials { justify-content: center; }
 }
 
 @media (max-width: 540px) {
@@ -1790,6 +1807,16 @@ a {
 @media (max-width: 900px) {
   .home-masonry { columns: 2; }
 }
+
+@media (max-width: 720px) {
+  .recipes-masonry { columns: 2; }
+  .home-masonry { columns: 2; }
+  .intro { padding: 4rem 1.5rem; }
+  .recipes-section { padding: 3rem 1.5rem; }
+  .email-form { max-width: 100%; }
+  .about-socials { justify-content: center; }
+}
+
 @media (max-width: 540px) {
   .home-masonry { columns: 1; }
   .home-masonry .masonry-card-img { height: 200px !important; }
@@ -1844,6 +1871,7 @@ a {
 }
 .email-input::placeholder { color: rgba(245,235,220,0.35); }
 .email-btn {
+  min-height: 44px;
   padding: 0.85rem 1.6rem;
   background: var(--terracotta);
   color: var(--cream);
@@ -1863,6 +1891,16 @@ a {
   margin-top: 1.2rem;
   font-size: 0.9rem;
 }
+
+@media (max-width: 720px) {
+  .recipes-masonry { columns: 2; }
+  .home-masonry { columns: 2; }
+  .intro { padding: 4rem 1.5rem; }
+  .recipes-section { padding: 3rem 1.5rem; }
+  .email-form { max-width: 100%; }
+  .about-socials { justify-content: center; }
+}
+
 @media (max-width: 540px) {
   .email-form { flex-direction: column; border-radius: 0.75rem; }
   .email-input { border-radius: 0.75rem 0.75rem 0 0; padding: 1rem 1.2rem; }
