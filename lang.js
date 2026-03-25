@@ -15,7 +15,7 @@ const NWG_TRANSLATIONS = {
     intro_quote: "\"I cook because healing starts in the kitchen.\"",
     intro_body: "Every recipe here is backed by science, driven by flavor, and made with the belief that food should love you back. No guilt. No restriction. Just real food that makes you feel alive.",
     stat_recipes: "Curated Recipes",
-    stat_clean: "Clean Ingredients",
+    stat_clean: "Real Food",
     stat_guilt: "Guilt",
     // Section titles
     section_recipes: "The Recipes",
@@ -89,7 +89,7 @@ const NWG_TRANSLATIONS = {
     intro_quote: "\"Aku memasak karena proses penyembuhan dimulai dari dapur.\"",
     intro_body: "Setiap resep di sini didukung oleh sains, penuh cita rasa, dan dibuat dengan keyakinan bahwa makanan seharusnya menyayangimu balik. Tanpa rasa bersalah. Tanpa larangan. Cukup makanan nyata yang membuatmu merasa hidup.",
     stat_recipes: "Resep Pilihan",
-    stat_clean: "Bahan Bersih",
+    stat_clean: "Makanan Nyata",
     stat_guilt: "Rasa Bersalah",
     // Section titles
     section_recipes: "Resep-Resepnya",
